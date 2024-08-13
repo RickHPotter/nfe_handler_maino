@@ -29,8 +29,6 @@ jobs:
 
       - name: Set up database schema
         run: bin/rails db:schema:load
-      - name: Set up npm
-        run: npm install
       - name: Set up assets
         run: bin/rails assets:precompile
       - name: Run tests
