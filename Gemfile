@@ -32,7 +32,7 @@ group :development do
   gem "brakeman"
   gem "bundler-audit"
   gem "erb_lint", require: false
-  # gem "hotwire-livereload"
+  gem "hotwire-livereload"
   gem "rubocop"
   gem "web-console"
 
@@ -50,7 +50,7 @@ group :test do
 end
 
 group :development, :test do
-  # gem "bullet"
+  gem "bullet"
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "factory_bot_rails"
   gem "faker"
