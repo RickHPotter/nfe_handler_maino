@@ -25,7 +25,7 @@ end
 
 Rails.root.glob("spec/support/**/*.rb").sort.each { |f| require f }
 
-Capybara.default_host = "http://localhost:3000"
+# Capybara.default_host = "http://localhost:3000"
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
