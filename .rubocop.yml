@@ -1,0 +1,44 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "Guardfile"
+    - "bin/**"
+    - "db/**/*"
+    - "config/**/*"
+    - "**/vendor/**/*"
+    - "**/vendor/**/.*"
+    - "node_modules/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: "[]"
+
+Layout/LineLength:
+  Max: 160
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: space
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 16
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 26
+
+Metrics/BlockLength:
+  Max: 22
+  Exclude:
+    - "spec/***/*"
