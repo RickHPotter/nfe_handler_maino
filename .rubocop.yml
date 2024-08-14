@@ -9,6 +9,7 @@ AllCops:
     - "**/vendor/**/*"
     - "**/vendor/**/.*"
     - "node_modules/**/*"
+    - "spec/views/**/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

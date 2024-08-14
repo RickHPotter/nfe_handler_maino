@@ -38,9 +38,9 @@ The creation of this app ...
 
 - Subtasks:
   - ⌛ Create partial CRUD for `Invoice`.
-  - ⌛ Create `Invoice` model -> [cUF, cNF, mod, serie, nNF, dhEmi, tpNF, emit_id, dest_id]
-  - ⌛ Create `InvoiceEntity` model -> [CNPJ, xNome, xFant, IE, CRT, indIEDest, ender_id]
-  - ⌛ Create `EntityAddress` model -> [xLgr, nro, xCpl, xBairro, cMun, xMun, UF, CEP, cPais, xPais, fone]
+  - ✅ Create `Invoice` model -> [cUF, cNF, mod, serie, nNF, dhEmi, tpNF, emit_id, dest_id]
+  - ✅ Create `InvoiceEntity` model -> [CNPJ, xNome, xFant, IE, CRT, indIEDest, ender_id]
+  - ✅ Create `EntityAddress` model -> [xLgr, nro, xCpl, xBairro, cMun, xMun, UF, CEP, cPais, xPais, fone]
   - ⌛ Setup form for uploading a single invoice of type `xml`.
 
 - Extra:
