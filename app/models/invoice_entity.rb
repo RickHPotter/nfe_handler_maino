@@ -25,7 +25,6 @@ class InvoiceEntity < ApplicationRecord
   # @validations ..............................................................
   validates :cNPJ, :xNome, :indIEDest, presence: true
   validates :cNPJ, uniqueness: true
-  validate :cnpj_or_cpf
   validates :xNome, length: { in: 2..60 }
   validates :xFant, length: { maximum: 60 }
   validates :iE, length: { maximum: 14 }
@@ -33,6 +32,8 @@ class InvoiceEntity < ApplicationRecord
   validates :indIEDest, length: { is: 1, inclusion: { in: %w[1 2 9] } }
 
   # @callbacks ................................................................
+  after_validation :validate_cnpj_or_cpf
+
   # @scopes ...................................................................
   # @additional_config ........................................................
   # @class_methods ............................................................
@@ -42,8 +43,8 @@ class InvoiceEntity < ApplicationRecord
 
   private
 
-  def cnpj_or_cpf
-    return if cNPJ.size.in?([ 11, 14 ])
+  def validate_cnpj_or_cpf
+    return if errors.include?(:cNPJ) || cNPJ.size.in?([ 11, 14 ])
 
     errors.add(:cNPJ, "cNPJ ou CPF inválido")
   end
