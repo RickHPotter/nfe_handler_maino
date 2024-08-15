@@ -51,12 +51,15 @@ The creation of this app ...
 ### 003: Invoice Extraction Service/Job
 
 - Subtasks:
+  - ✅ Create `Zip::XmlExtractionService` that processes `zip` files.
+  - ✅ Create `Xml::NfeExtractionService` that processes `XML`s.
+  - ✅ Create `Nfe::InvoiceService` that processes `Invoice`s.
+
+  - ⌛ Create a `Sidekiq` Job for the `InvoiceExtractionService` Service.
   - ⌛ Create models that revolve around with `Invoice` Structure.
     - 1 ⌛ `InvoiceItem` model -> [cProd, cEAN, xProd, NCM, CFOP, uCom, qCom, vUnCom, vProd, indTot]
     - 2 ⌛ `InvoiceItemTotal` model -> [vICMS, vIPI, VII, VIOF, vTotTrib]
     - 2 ⌛ `InvoiceTotal` model -> [vBC, vICMS, vIPI, VII, VIOF, vPIS, vCOFINS, vOutro, vNF, vTotTrib]
-  - ⌛ Create `InvoiceExtractionService` that processes `Invoice`s.
-  - ⌛ Create a `Sidekiq` Job for the `InvoiceExtractionService` Service.
 
 - Extra:
   - ⌛ Be.
@@ -64,12 +67,12 @@ The creation of this app ...
 ### 004: Invoice Reports Screen
 
 - Subtasks:
+  - ⌛ Create `Invoice::ReportService` that processes `Report`s.
   - ⌛ Create an `InvoiceReport` `Sidekiq` Job.
     - 1 ⌛ `Report` based on all invoices uploaded.
     - 2 ⌛ Provide `Report` download to user in `excel` format.
   - ⌛ The created `Report` should follow a given structure.
-    - 1 ⌛ Dados da Nota Fiscal: Número de Série (serie), Número da Nota Fiscal (nNF), Data e Hora de Emissão (dhEmi), Dados do Emitente (emit) e do Destinatário (dest).
-    - 2 ⌛ Produtos Listados: Nome (xProd), NCM (NCM), CFOP (CFOP), Unidade Comercializada (uCom), Quantidade Comercializada (qCom), Valor Unitário (vUnCom).
+    - 1 ⌛ Dados da Nota Fiscal: Número de Série (serie), Número da Nota Fiscal (nNF), Data e Hora de Emissão (dhEmi), Dados do Emitente (emit) e do Destinatário (dest). 2 ⌛ Produtos Listados: Nome (xProd), NCM (NCM), CFOP (CFOP), Unidade Comercializada (uCom), Quantidade Comercializada (qCom), Valor Unitário (vUnCom).
     - 3 ⌛ Impostos Associados: Valor do ICMS (vICMS), Valor do IPI (vIPI), Valor do PIS (vPIS), Valor do COFINS (vCOFINS).
     - 4 ⌛ Totalizadores: Resumo dos valores totais dos produtos e impostos.
 
