@@ -24,6 +24,9 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "devise"
 gem "letter_opener_web"
 
+gem "rubyzip"
+gem "zip-zip"
+
 group :development do
   gem "annotate"
   gem "awesome_print"

@@ -1,0 +1,17 @@
+<%= form_with(model: Invoice.new, id: "invoice-form", class: "contents text-black", data: { controller: "form-validate file-input", file_input_target: "form" }) do |form| %>
+  <% if @errors %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(@errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+        <% @errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5 pt-0 pb-10">
+    <%= render "file_input", form: %>
+  </div>
+<% end %>

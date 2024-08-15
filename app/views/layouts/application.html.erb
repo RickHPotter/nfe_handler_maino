@@ -12,9 +12,15 @@
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+  <body class="h-screen bg-zinc-800 dark:bg-gray-300 text-white dark:text-black">
+    <main class="antialiased">
+      <div class="p-3">
+        <%= render "shared/flash" %>
+      </div>
+
+      <section class="container mx-auto mt-16 px-5 flex">
+        <%= yield %>
+      </section>
     </main>
   </body>
 </html>
