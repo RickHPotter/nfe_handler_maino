@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_14_006036) do
     t.string "xFant", limit: 60, comment: "xFant: Nome fantasia do emitente."
     t.string "iE", limit: 14, comment: "IE: Inscrição Estadual do emitente ou destinatário."
     t.string "cRT", limit: 1, comment: "CRT: Código de Regime Tributário do emitente."
-    t.string "indIEDest", limit: 1, null: false, comment: "indIEDest: Indicador da IE do destinatário (1 = Contribuinte, 2 = Isento, 9 = Não Contribuinte)."
+    t.string "indIEDest", limit: 1, comment: "indIEDest: Indicador da IE do destinatário (1 = Contribuinte, 2 = Isento, 9 = Não Contribuinte)."
     t.bigint "ender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

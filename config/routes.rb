@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root "invoices#index"
+  root "invoices#new"
 
   resources :invoices
 end

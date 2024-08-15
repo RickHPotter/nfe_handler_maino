@@ -26,7 +26,7 @@ RSpec.describe InvoiceEntity, type: :model do
         expect(subject).to be_valid
       end
 
-      %i[cNPJ xNome indIEDest].each do |attribute|
+      %i[cNPJ xNome].each do |attribute|
         it { should validate_presence_of(attribute) }
       end
     end

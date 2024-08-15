@@ -23,13 +23,12 @@ class InvoiceEntity < ApplicationRecord
   belongs_to :ender, class_name: "EntityAddress"
 
   # @validations ..............................................................
-  validates :cNPJ, :xNome, :indIEDest, presence: true
-  validates :cNPJ, uniqueness: true
+  validates :cNPJ, :xNome, presence: true
   validates :xNome, length: { in: 2..60 }
   validates :xFant, length: { maximum: 60 }
   validates :iE, length: { maximum: 14 }
   validates :cRT, length: { is: 1, allow_blank: true }
-  validates :indIEDest, length: { is: 1, inclusion: { in: %w[1 2 9] } }
+  validates :indIEDest, length: { maximum: 1, inclusion: { in: %w[1 2 9] } }
 
   # @callbacks ................................................................
   after_validation :validate_cnpj_or_cpf
@@ -46,6 +45,6 @@ class InvoiceEntity < ApplicationRecord
   def validate_cnpj_or_cpf
     return if errors.include?(:cNPJ) || cNPJ.size.in?([ 11, 14 ])
 
-    errors.add(:cNPJ, "cNPJ ou CPF inválido")
+    errors.add(:cNPJ, "CNPJ ou CPF inválido")
   end
 end

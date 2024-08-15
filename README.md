@@ -37,14 +37,16 @@ The creation of this app ...
 ### 002: Invoice Upload Screen
 
 - Subtasks:
-  - ⌛ Create partial CRUD for `Invoice`.
+  - ✅ Create partial CRUD for `Invoice`.
   - ✅ Create `Invoice` model -> [cUF, cNF, mod, serie, nNF, dhEmi, tpNF, emit_id, dest_id]
   - ✅ Create `InvoiceEntity` model -> [CNPJ, xNome, xFant, IE, CRT, indIEDest, ender_id]
   - ✅ Create `EntityAddress` model -> [xLgr, nro, xCpl, xBairro, cMun, xMun, UF, CEP, cPais, xPais, fone]
-  - ⌛ Setup form for uploading a single invoice of type `xml`.
+  - ✅ Setup form for uploading a single invoice of type `xml`.
 
 - Extra:
-  - ⌛ Setup form for uploading a `zip` file that contains multiple invoices.
+  - ✅ Setup form for uploading a `zip` file that contains multiple invoices.
+  - ✅ Implement file-input stimulus controller for file upload and drag-and-drop.
+  - ✅ Use notification stimulus controller from stimulus_components.
 
 ### 003: Invoice Extraction Service/Job
 

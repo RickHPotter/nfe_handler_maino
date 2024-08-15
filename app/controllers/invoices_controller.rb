@@ -3,38 +3,45 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update destroy]
 
-  # GET /invoices or /invoices.json
   def index
     @invoices = Invoice.all
   end
 
-  # GET /invoices/1 or /invoices/1.json
   def show; end
 
-  # GET /invoices/new
-  def new
-    @invoice = Invoice.new
-  end
+  def new; end
 
-  # GET /invoices/1/edit
   def edit; end
 
-  # POST /invoices or /invoices.json
   def create
-    @invoice = Invoice.new(invoice_params)
+    case file.content_type.split("/").last
+    when "xml"
+      # xml_service = Xml::NfeExtractionService.new(file:)
+      # nfe_service = Nfe::InvoiceService.new(xml_service, current_user)
+      # nfe_service.run
+      # Invoice::ReportService.run(nfe_service.invoice)
+    when "zip"
+      # zip_service = Zip::XmlExtractionService.new(file)
+      # zip_service.extract_all_files
+      # zip_service.xmls.each do |xml|
+      #   xml_service = Xml::NfeExtractionService.new(xml:)
+      #   nfe_service = Nfe::InvoiceService.new(xml_service, current_user)
+      #   nfe_service.run
+      #   Invoice::ReportService.run(nfe_service.invoice)
+      # end
+    end
 
     respond_to do |format|
-      if @invoice.save
-        format.html { redirect_to invoice_url(@invoice), notice: "Invoice was successfully created." }
-        format.json { render :show, status: :created, location: @invoice }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
+      # if true
+      format.html { redirect_to invoices_url, notice: "Invoice was successfully created." }
+      format.json { render :show, status: :created, location: @invoice }
+      # else
+      #   format.html { render :new, status: :unprocessable_entity }
+      #   format.json { render json: @invoice.errors, status: :unprocessable_entity }
+      # end
     end
   end
 
-  # PATCH/PUT /invoices/1 or /invoices/1.json
   def update
     respond_to do |format|
       if @invoice.update(invoice_params)
@@ -47,7 +54,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # DELETE /invoices/1 or /invoices/1.json
   def destroy
     @invoice.destroy!
 
@@ -66,6 +72,10 @@ class InvoicesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def invoice_params
-    params.require(:invoice).permit(:user_id, :processed_at, :cUF, :cNF, :mod, :serie, :nNF, :dhEmi, :tpNF, :emit_id)
+    params.require(:invoice).permit
+  end
+
+  def file
+    params[:invoice][:file].last
   end
 end

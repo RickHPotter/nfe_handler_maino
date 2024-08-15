@@ -359,6 +359,7 @@ GEM
       rubocop-performance
       rubocop-rails
     ruby-progressbar (1.13.0)
+    rubyzip (2.3.2)
     securerandom (0.3.1)
     shoulda-matchers (6.3.1)
       activesupport (>= 5.2.0)
@@ -426,6 +427,8 @@ GEM
     websocket-extensions (0.1.5)
     yard (0.9.36)
     zeitwerk (2.6.17)
+    zip-zip (0.3)
+      rubyzip (>= 1.0.0)
 
 PLATFORMS
   aarch64-linux
@@ -469,6 +472,7 @@ DEPENDENCIES
   redis (>= 4.0.1)
   rspec-rails
   rubocop-rails-omakase
+  rubyzip
   shoulda-matchers
   simplecov
   solargraph
@@ -477,6 +481,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  zip-zip
 
 RUBY VERSION
    ruby 3.3.4p94

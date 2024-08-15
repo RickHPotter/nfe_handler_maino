@@ -1,0 +1,31 @@
+<div class="flex w-full min-h-72 h-auto">
+  <label class="cursor-pointer w-full" data-file-input-target="label"
+         data-action="dragover->file-input#dragover dragleave->file-input#dragleave drop->file-input#drop">
+    <%= form.file_field :file, class: "absolute p-0 b-0 h-0 w-0 overflow-hidden", multiple: true, accept: ".xml,.zip",
+                               data: { file_input_target: "pickerInput", action: "change->file-input#submit_on_upload" } %>
+
+    <div class="relative w-full h-full border-black border-2 rounded-lg bg-green-600/80 text-white">
+      <div class="flex justify-center items-center absolute inset-2.5 border border-dashed border-black/80 rounded"></div>
+      <div class="h-full w-full flex flex-col items-center justify-center">
+        <div class="pb-4">
+          <div class="flex overflow-hidden h-16 w-24">
+            <%= render "shared/svgs/documents" %>
+          </div>
+        </div>
+
+        <div class="relative flex rounded bg-black text-white z-20">
+          <div class="m-0 outline-none border-none w-auto overflow-visible flex items-center bg-transparent font-sans font-semibold text-base leading-6 p-4 h-14 relative rounded-l">
+            <div class="flex overflow-hidden w-6 h-6">
+              <%= render "shared/svgs/add_document" %>
+            </div>
+
+            <span class="ml-2 whitespace-nowrap elipsis overflow-hidden">Escolher arquivos</span>
+          </div>
+
+        </div>
+
+        <div class="font-normal pt-3 py-3 text-sm text-center ">ou solte arquivos aqui</div>
+      </div>
+    </div>
+  </label>
+</div>
