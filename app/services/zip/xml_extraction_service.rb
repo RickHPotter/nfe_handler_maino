@@ -1,26 +1,18 @@
 # frozen_string_literal: true
 
-require "zip"
-
 module Zip
   class XmlExtractionService
+    require "zip"
     attr_reader :xmls
 
-    def initialize(file)
+    def initialize(file_content)
       @zip = Tempfile.new
-      ::File.binwrite(@zip.path, file.read)
+      ::File.binwrite(@zip.path, file_content)
+      @xml_files = Zip::File.open(@zip.path).filter { |file| file.name.end_with?(".xml") }
     end
 
     def extract_all_files
-      xmls = Zip::File.open(@zip.path).filter do |file|
-        file.name.end_with?(".xml")
-      end
-
-      @xmls = xmls.map do |file|
-        xml = Tempfile.new
-        ::File.binwrite(xml.path, file.get_input_stream.read)
-        xml
-      end
+      @xmls = @xml_files.map { |file| file.get_input_stream.read }
     end
   end
 end

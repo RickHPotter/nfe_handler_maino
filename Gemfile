@@ -11,6 +11,8 @@ gem "propshaft"
 gem "puma", ">= 5.0"
 gem "redis", ">= 4.0.1"
 
+gem "sidekiq"
+
 gem "importmap-rails"
 gem "stimulus-rails"
 gem "turbo-rails"

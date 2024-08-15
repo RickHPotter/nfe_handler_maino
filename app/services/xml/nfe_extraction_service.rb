@@ -2,11 +2,9 @@
 
 module Xml
   class NfeExtractionService
-    def initialize(file: nil, xml: nil)
-      if file && xml.nil?
-        xml = Tempfile.new
-        File.binwrite(xml.path, file.read)
-      end
+    def initialize(file_content)
+      xml = Tempfile.new
+      ::File.binwrite(xml.path, file_content)
 
       @xml = Nokogiri::XML(xml)
     ensure

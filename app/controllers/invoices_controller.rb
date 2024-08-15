@@ -14,31 +14,13 @@ class InvoicesController < ApplicationController
   def edit; end
 
   def create
-    case file.content_type.split("/").last
-    when "xml"
-      # xml_service = Xml::NfeExtractionService.new(file:)
-      # nfe_service = Nfe::InvoiceService.new(xml_service, current_user)
-      # nfe_service.run
-      # Invoice::ReportService.run(nfe_service.invoice)
-    when "zip"
-      # zip_service = Zip::XmlExtractionService.new(file)
-      # zip_service.extract_all_files
-      # zip_service.xmls.each do |xml|
-      #   xml_service = Xml::NfeExtractionService.new(xml:)
-      #   nfe_service = Nfe::InvoiceService.new(xml_service, current_user)
-      #   nfe_service.run
-      #   Invoice::ReportService.run(nfe_service.invoice)
-      # end
-    end
+    file_content = Base64.encode64(file.read)
+    file_type = file.content_type.split("/").last
+    Xml::ProcessingJob.perform_later(file_content, file_type, current_user)
 
     respond_to do |format|
-      # if true
-      format.html { redirect_to invoices_url, notice: "Invoice was successfully created." }
+      format.html { redirect_to invoices_url, notice: "Invoice is being processed." }
       format.json { render :show, status: :created, location: @invoice }
-      # else
-      #   format.html { render :new, status: :unprocessable_entity }
-      #   format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      # end
     end
   end
 
