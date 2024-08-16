@@ -23,7 +23,7 @@ FactoryBot.define do
       xFant { "MAINO SISTEMAS" }
       iE { "78205377" }
       cRT { "3" }
-      indIEDest { "1" }
+      indIEDest { "" }
 
       association :ender, factory: %i[entity_address emit]
     end

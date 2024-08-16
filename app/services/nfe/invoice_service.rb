@@ -55,7 +55,7 @@ module Nfe
         cNPJ: @nfe_entities[entity][:cNPJ],
         xNome: @nfe_entities[entity][:xNome],
         xFant: @nfe_entities[entity][:xFant],
-        iE: @nfe_entities[entity][:IE],
+        iE: @nfe_entities[entity][:iE],
         cRT: @nfe_entities[entity][:cRT],
         indIEDest: @nfe_entities[entity][:indIEDest]
       }.compact_blank

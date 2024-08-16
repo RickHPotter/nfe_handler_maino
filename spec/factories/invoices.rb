@@ -34,7 +34,7 @@ FactoryBot.define do
       serie { "4" }
       nNF { "500778" }
       tpNF { "1" }
-      dhEmi { DateTime.new(2024, 8, 12, 14, 21, 59) }
+      dhEmi { DateTime.new(2024, 8, 12, 14, 21, 59, "-03:00").iso8601 }
       processed_at { DateTime.now }
     end
 
