@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_14_006036) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_16_151248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "entity_addresses", force: :cascade do |t|
     t.string "xLgr", limit: 60, null: false, comment: "xLgr: Logradouro."
@@ -43,6 +76,52 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_14_006036) do
     t.index ["ender_id"], name: "index_invoice_entities_on_ender_id"
   end
 
+  create_table "invoice_item_totals", force: :cascade do |t|
+    t.decimal "vICMS", precision: 15, scale: 2, default: "0.0", null: false, comment: "vICMS: Valor Total do ICMS."
+    t.decimal "vIPI", precision: 15, scale: 2, default: "0.0", null: false, comment: "vIPI: Valor Total do IPI."
+    t.decimal "vII", precision: 15, scale: 2, default: "0.0", null: false, comment: "vII: Valor Total do Imposto de Importação."
+    t.decimal "vIOF", precision: 15, scale: 2, default: "0.0", null: false, comment: "vIOF: Valor Total do IOF."
+    t.decimal "vTotTrib", precision: 15, scale: 2, default: "0.0", null: false, comment: "vTotTrib: Valor Total dos Tributos."
+    t.bigint "invoice_item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_item_id"], name: "index_invoice_item_totals_on_invoice_item_id"
+  end
+
+  create_table "invoice_items", force: :cascade do |t|
+    t.string "cProd", limit: 60, null: false, comment: "cProd: Código do Produto."
+    t.string "cEAN", limit: 14, comment: "cEAN: Código de Barras do Produto."
+    t.string "xProd", limit: 120, null: false, comment: "xProd: Descrição do Produto."
+    t.string "nCM", limit: 8, null: false, comment: "NCM: Código NCM (Nomenclatura Comum do Mercosul)."
+    t.string "cFOP", limit: 4, null: false, comment: "CFOP: Código Fiscal de Operações e Prestações."
+    t.string "uCom", limit: 6, null: false, comment: "uCom: Unidade Comercial."
+    t.decimal "qCom", precision: 15, scale: 4, null: false, comment: "qCom: Quantidade Comercializada."
+    t.decimal "vUnCom", precision: 15, scale: 10, null: false, comment: "vUnCom: Valor Unitário de Comercialização."
+    t.decimal "vProd", precision: 15, scale: 2, null: false, comment: "vProd: Valor Total Bruto dos Produtos ou Serviços."
+    t.string "indTot", limit: 1, null: false, comment: "indTot: Indica se compõe o valor total da NF-e (0 = não, 1 = sim)."
+    t.bigint "invoice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
+  end
+
+  create_table "invoice_totals", force: :cascade do |t|
+    t.decimal "vBC", precision: 15, scale: 2, null: false, comment: "vBC: Valor da Base de Cálculo do ICMS."
+    t.decimal "vICMS", precision: 15, scale: 2, default: "0.0", null: false, comment: "vICMS: Valor Total do ICMS."
+    t.decimal "vIPI", precision: 15, scale: 2, default: "0.0", null: false, comment: "vIPI: Valor Total do IPI."
+    t.decimal "vII", precision: 15, scale: 2, default: "0.0", null: false, comment: "vII: Valor Total do Imposto de Importação."
+    t.decimal "vIOF", precision: 15, scale: 2, default: "0.0", null: false, comment: "vIOF: Valor Total do IOF."
+    t.decimal "vPIS", precision: 15, scale: 2, default: "0.0", null: false, comment: "vPIS: Valor do PIS."
+    t.decimal "vCOFINS", precision: 15, scale: 2, default: "0.0", null: false, comment: "vCOFINS: Valor do COFINS."
+    t.decimal "vOutro", precision: 15, scale: 2, default: "0.0", null: false, comment: "vOutro: Outras Despesas Acessórias."
+    t.decimal "vNF", precision: 15, scale: 2, null: false, comment: "vNF: Valor Total da Nota Fiscal."
+    t.decimal "vTotTrib", precision: 15, scale: 2, default: "0.0", null: false, comment: "vTotTrib: Valor Total dos Tributos."
+    t.bigint "invoice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_totals_on_invoice_id"
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.string "cUF", limit: 2, null: false, comment: "cUF: Código da uF do emitente do Documento Fiscal."
     t.string "cNF", limit: 8, null: false, comment: "cNF: Código numérico que compõe a Chave de Acesso."
@@ -57,7 +136,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_14_006036) do
     t.bigint "dest_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "document_id", null: false
     t.index ["dest_id"], name: "index_invoices_on_dest_id"
+    t.index ["document_id"], name: "index_invoices_on_document_id"
     t.index ["emit_id"], name: "index_invoices_on_emit_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
@@ -81,7 +162,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_14_006036) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "invoice_entities", "entity_addresses", column: "ender_id"
+  add_foreign_key "invoice_item_totals", "invoice_items"
+  add_foreign_key "invoice_items", "invoices"
+  add_foreign_key "invoice_totals", "invoices"
+  add_foreign_key "invoices", "documents"
   add_foreign_key "invoices", "invoice_entities", column: "dest_id"
   add_foreign_key "invoices", "invoice_entities", column: "emit_id"
   add_foreign_key "invoices", "users"

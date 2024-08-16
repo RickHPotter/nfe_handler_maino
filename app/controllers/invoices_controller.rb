@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: %i[show edit update destroy]
+  before_action :set_invoice, only: %i[show destroy]
 
   def index
     @invoices = Invoice.all
@@ -11,45 +11,18 @@ class InvoicesController < ApplicationController
 
   def new; end
 
-  def edit; end
-
   def create
-    case file.content_type.split("/").last
-    when "xml"
-      # xml_service = Xml::NfeExtractionService.new(file:)
-      # nfe_service = Nfe::InvoiceService.new(xml_service, current_user)
-      # nfe_service.run
-      # Invoice::ReportService.run(nfe_service.invoice)
-    when "zip"
-      # zip_service = Zip::XmlExtractionService.new(file)
-      # zip_service.extract_all_files
-      # zip_service.xmls.each do |xml|
-      #   xml_service = Xml::NfeExtractionService.new(xml:)
-      #   nfe_service = Nfe::InvoiceService.new(xml_service, current_user)
-      #   nfe_service.run
-      #   Invoice::ReportService.run(nfe_service.invoice)
-      # end
-    end
+    @document = Document.create(file:) if file_is_supported
 
     respond_to do |format|
-      # if true
-      format.html { redirect_to invoices_url, notice: "Invoice was successfully created." }
-      format.json { render :show, status: :created, location: @invoice }
-      # else
-      #   format.html { render :new, status: :unprocessable_entity }
-      #   format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      # end
-    end
-  end
+      if @document&.persisted?
+        Xml::ProcessingJob.perform_later(@document.id, current_user)
 
-  def update
-    respond_to do |format|
-      if @invoice.update(invoice_params)
-        format.html { redirect_to invoice_url(@invoice), notice: "Invoice was successfully updated." }
-        format.json { render :show, status: :ok, location: @invoice }
+        format.html { redirect_to invoices_url, notice: I18n.t("invoices.create.success") }
+        format.json { render :show, status: :created, location: @invoice }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
+        format.html { redirect_to new_invoice_url, alert: I18n.t("invoices.create.failure") }
+        format.json { render :show, status: :unprocessable_entity, location: @invoice }
       end
     end
   end
@@ -58,12 +31,20 @@ class InvoicesController < ApplicationController
     @invoice.destroy!
 
     respond_to do |format|
-      format.html { redirect_to invoices_url, notice: "Invoice was successfully destroyed." }
+      format.html { redirect_to invoices_url, notice: I18n.t("invoices.destroy.success") }
       format.json { head :no_content }
     end
   end
 
   private
+
+  def file
+    params[:invoice][:file]
+  end
+
+  def file_is_supported
+    file&.content_type&.split("/")&.last&.in?(%w[xml zip])
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_invoice
@@ -73,9 +54,5 @@ class InvoicesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def invoice_params
     params.require(:invoice).permit
-  end
-
-  def file
-    params[:invoice][:file].last
   end
 end

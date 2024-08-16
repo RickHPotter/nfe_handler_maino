@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   devise_for :users
 
@@ -7,5 +9,7 @@ Rails.application.routes.draw do
 
   root "invoices#new"
 
-  resources :invoices
+  resources :invoices, except: %i[edit update]
+
+  mount Sidekiq::Web => "/sidekiq"
 end

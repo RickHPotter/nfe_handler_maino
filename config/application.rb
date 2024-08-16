@@ -50,5 +50,7 @@ module NfeHandlerMaino
       Devise::PasswordsController.layout "auth"
       Devise::Mailer.layout "mailer"
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -18,6 +18,7 @@
 #  dest_id      :bigint           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  document_id  :bigint           not null
 #
 class Invoice < ApplicationRecord
   # @extends ..................................................................
@@ -25,8 +26,12 @@ class Invoice < ApplicationRecord
   # @security (i.e. attr_accessible) ..........................................
   # @relationships ............................................................
   belongs_to :user
+  belongs_to :document
   belongs_to :emit, class_name: "InvoiceEntity"
   belongs_to :dest, class_name: "InvoiceEntity"
+
+  has_one :invoice_total
+  has_many :invoice_items
 
   # @validations ..............................................................
   validates :cUF, :cNF, :mod, :serie, :nNF, :dhEmi, :tpNF, presence: true

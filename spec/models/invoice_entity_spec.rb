@@ -8,9 +8,9 @@
 #  cNPJ       :string(14)       not null
 #  xNome      :string(60)       not null
 #  xFant      :string(60)
-#  IE         :string(14)
-#  cRT        :string(1)        not null
-#  indIEDest  :string(1)        not null
+#  iE         :string(14)
+#  cRT        :string(1)
+#  indIEDest  :string(1)
 #  ender_id   :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

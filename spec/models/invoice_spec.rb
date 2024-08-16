@@ -18,6 +18,7 @@
 #  dest_id      :bigint           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  document_id  :bigint           not null
 #
 require "rails_helper"
 
@@ -36,7 +37,7 @@ RSpec.describe Invoice, type: :model do
     end
 
     context "( associations )" do
-      %i[user emit dest].each { |model| it { should belong_to(model) } }
+      %i[user document emit dest].each { |model| it { should belong_to(model) } }
     end
   end
 end

@@ -23,6 +23,12 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+require "sidekiq/testing"
+
+ActiveJob::Base.queue_adapter = :test
+Sidekiq::Testing.fake!
+Sidekiq::Testing.disable!
+
 Rails.root.glob("spec/support/**/*.rb").sort.each { |f| require f }
 
 # Capybara.default_host = "http://localhost:3000"

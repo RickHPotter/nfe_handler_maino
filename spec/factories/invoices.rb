@@ -18,10 +18,12 @@
 #  dest_id      :bigint           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  document_id  :bigint           not null
 #
 FactoryBot.define do
   factory :invoice do
     association :user, factory: %i[user random]
+    association :document
     association :emit, factory: %i[invoice_entity emit]
     association :dest, factory: %i[invoice_entity dest]
 
@@ -32,7 +34,7 @@ FactoryBot.define do
       serie { "4" }
       nNF { "500778" }
       tpNF { "1" }
-      dhEmi { DateTime.new(2024, 8, 12, 14, 21, 59) }
+      dhEmi { DateTime.new(2024, 8, 12, 14, 21, 59, "-03:00").iso8601 }
       processed_at { DateTime.now }
     end
 
