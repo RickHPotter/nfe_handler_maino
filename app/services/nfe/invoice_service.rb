@@ -4,9 +4,10 @@ module Nfe
   class InvoiceService
     attr_reader :invoice
 
-    def initialize(extracted_nfe, current_user)
+    def initialize(extracted_nfe, current_user, document_id)
       @nfe = extracted_nfe
       @current_user = current_user
+      @document = Document.find(document_id)
 
       @nfe_data = extracted_nfe.extract_invoice_data
       @nfe_entities = { emit: extracted_nfe.extract_invoice_entity(:emit), dest: extracted_nfe.extract_invoice_entity(:dest) }
@@ -27,7 +28,7 @@ module Nfe
         emit = InvoiceEntity.create!(invoice_emit_entity.merge(ender: emit_address))
         dest = InvoiceEntity.create!(invoice_dest_entity.merge(ender: dest_address))
 
-        @invoice = Invoice.create!(build_invoice.merge(emit:, dest:))
+        @invoice = Invoice.create!(build_invoice.merge(emit:, dest:, processed_at: DateTime.current))
       end
     end
 
@@ -70,7 +71,7 @@ module Nfe
         tpNF: @nfe_data[:tpNF],
         dhEmi: @nfe_data[:dhEmi],
         user_id: @current_user.id,
-        processed_at: DateTime.current
+        document_id: @document.id
       }.compact_blank
     end
   end

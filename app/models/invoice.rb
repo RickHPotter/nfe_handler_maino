@@ -25,6 +25,7 @@ class Invoice < ApplicationRecord
   # @security (i.e. attr_accessible) ..........................................
   # @relationships ............................................................
   belongs_to :user
+  belongs_to :document
   belongs_to :emit, class_name: "InvoiceEntity"
   belongs_to :dest, class_name: "InvoiceEntity"
 

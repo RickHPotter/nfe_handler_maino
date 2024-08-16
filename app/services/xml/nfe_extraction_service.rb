@@ -2,14 +2,8 @@
 
 module Xml
   class NfeExtractionService
-    def initialize(file_content)
-      xml = Tempfile.new
-      ::File.binwrite(xml.path, file_content)
-
-      @xml = Nokogiri::XML(xml)
-    ensure
-      xml.close
-      xml.unlink
+    def initialize(xml_content)
+      @xml = Nokogiri::XML(xml_content)
     end
 
     def extract_invoice_data

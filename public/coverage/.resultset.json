@@ -245,6 +245,14 @@
           null
         ]
       },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/locale.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1
+        ]
+      },
       "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
@@ -443,7 +451,7 @@
           1,
           null,
           1,
-          6,
+          24,
           null,
           0,
           null,
@@ -481,6 +489,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           1,
@@ -500,8 +509,64 @@
           null,
           null
         ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/document.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/jobs/xml/processing_job.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/jobs/application_job.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1723763985
+    "timestamp": 1723820690
   }
 }

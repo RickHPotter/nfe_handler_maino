@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root "invoices#new"
 
-  resources :invoices
+  resources :invoices, except: %i[edit update]
 
   mount Sidekiq::Web => "/sidekiq"
 end

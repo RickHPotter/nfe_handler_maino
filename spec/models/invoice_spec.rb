@@ -36,7 +36,7 @@ RSpec.describe Invoice, type: :model do
     end
 
     context "( associations )" do
-      %i[user emit dest].each { |model| it { should belong_to(model) } }
+      %i[user document emit dest].each { |model| it { should belong_to(model) } }
     end
   end
 end

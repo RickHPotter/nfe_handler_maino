@@ -22,6 +22,7 @@
 FactoryBot.define do
   factory :invoice do
     association :user, factory: %i[user random]
+    association :document
     association :emit, factory: %i[invoice_entity emit]
     association :dest, factory: %i[invoice_entity dest]
 

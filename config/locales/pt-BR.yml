@@ -1,0 +1,41 @@
+pt-BR:
+  nav:
+    about: "Sobre"
+
+  # devise:
+  #   sign_up: "Inscrever-se"
+  #   login: "Login"
+  #   logout: "Sair"
+
+  links:
+    show: "Mostrar"
+    search: "Pesquisar"
+    filter: "Filtrar"
+    destroy: "Deletar"
+    new: "Novo"
+    back: "Voltar"
+    confirm: "Tem certeza?"
+    confirm_delete: "Tem certeza que quer apagar?"
+
+  invoices:
+    model_name: "Nota Fiscal"
+    title: "Notas Fiscais"
+    reports: "Relatórios"
+    new: "Nova Nota Fiscal"
+    delete: "Deletar Nota Fiscal"
+
+    file_input:
+      label: "Escolher arquivo"
+      hint: "ou solte um arquivo aqui"
+      supported_formats: "Arquivos Suportados: [ XML, ZIP ]"
+
+    create:
+      success: "Seu(s) XML(s) estão sendo processados."
+      failed: "Falha ao processar XML(s). Há algo de errado com o seu(s) arquivo(s)."
+
+    destroy:
+      success: "Nota Fiscal deletada com sucesso."
+
+    job:
+      success: "Nota Fiscal processada com sucesso."
+      failed : "Falha ao processar Nota Fiscal. Há algo de errado com a sua Nota Fiscal."

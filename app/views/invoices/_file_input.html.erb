@@ -1,11 +1,12 @@
 <div class="flex w-full min-h-72 h-auto">
-  <label class="cursor-pointer w-full" data-file-input-target="label"
+  <label class="cursor-pointer w-full border border-black" data-file-input-target="label"
          data-action="dragover->file-input#dragover dragleave->file-input#dragleave drop->file-input#drop">
-    <%= form.file_field :file, class: "absolute p-0 b-0 h-0 w-0 overflow-hidden", multiple: true, accept: ".xml,.zip",
+    <%= form.file_field :file, class: "absolute p-0 b-0 h-0 w-0 overflow-hidden", accept: ".xml,.zip",
                                data: { file_input_target: "pickerInput", action: "change->file-input#submit_on_upload" } %>
 
-    <div class="relative w-full h-full border-black border-2 rounded-lg bg-green-600/80 text-white">
+    <div class="relative w-full h-full border border-black rounded-lg bg-green-600/80 text-white">
       <div class="flex justify-center items-center absolute inset-2.5 border border-dashed border-black/80 rounded"></div>
+      <small class="absolute top-4 left-4 text-indigo-100"><%= t("invoices.file_input.supported_formats") %></small>
       <div class="h-full w-full flex flex-col items-center justify-center">
         <div class="pb-4">
           <div class="flex overflow-hidden h-16 w-24">
@@ -19,12 +20,12 @@
               <%= render "shared/svgs/add_document" %>
             </div>
 
-            <span class="ml-2 whitespace-nowrap elipsis overflow-hidden">Escolher arquivos</span>
+            <span class="ml-2 whitespace-nowrap elipsis overflow-hidden"><%= t("invoices.file_input.label") %></span>
           </div>
 
         </div>
 
-        <div class="font-normal pt-3 py-3 text-sm text-center ">ou solte arquivos aqui</div>
+        <div class="font-normal pt-3 py-3 text-sm text-center "><%= t("invoices.file_input.hint") %></div>
       </div>
     </div>
   </label>

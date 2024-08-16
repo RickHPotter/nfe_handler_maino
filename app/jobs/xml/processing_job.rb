@@ -4,15 +4,19 @@ module Xml
   class ProcessingJob < ApplicationJob
     queue_as :default
 
-    def perform(file_content, file_type, user)
-      file_content = Base64.decode64(file_content)
+    def perform(document_id, user)
+      document = Document.find(document_id)
+      file_content = document.file.download
+      file_type = document.file.content_type.split("/").last
 
       xmls = [ file_content ] if file_type == "xml"
       xmls ||= xmls_from_zip(file_content)
 
-      xmls.each { |xml_content| Nfe::InvoiceJob.perform_later(xml_content, user) }
+      xmls.each { |xml_content| Nfe::InvoiceJob.perform_later(document_id, xml_content, user) }
 
-      # user.notifications.create(message: "Your invoice has been processed.")
+      # user.notifications.create(message: I18n.t("invoices.job.success"))
+    rescue StandardError # => e
+      # user.notifications.create(message: I18n.t("invoices.job.failed"), body: e.message)
     end
 
     def xmls_from_zip(file_content)
