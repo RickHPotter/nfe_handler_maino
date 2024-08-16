@@ -2,10 +2,10 @@ pt-BR:
   nav:
     about: "Sobre"
 
-  # devise:
-  #   sign_up: "Inscrever-se"
-  #   login: "Login"
-  #   logout: "Sair"
+  devise:
+    sign_up: "Inscrever-se"
+    login: "Login"
+    logout: "Sair"
 
   links:
     show: "Mostrar"

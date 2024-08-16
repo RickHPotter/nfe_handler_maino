@@ -2,10 +2,10 @@ en:
   nav:
     about: "About"
 
-  # devise:
-  #   sign_up: "Sign Up"
-  #   login: "Login"
-  #   logout: "Logout"
+  devise:
+    sign_up: "Sign Up"
+    login: "Login"
+    logout: "Logout"
 
   links:
     show: "Show"
