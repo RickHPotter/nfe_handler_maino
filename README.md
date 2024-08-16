@@ -58,14 +58,15 @@ The creation of this app ...
   - ✅ Create a `Sidekiq` `Nfe::InvoiceJob` for the `InvoiceExtractionService` Service.
   - ✅ Fire `Nfe::InvoiceJob` as soon as `Xml::ProcessingJob` finishes processing an `xml`.
 
-  - ⌛ Create models that revolve around with `Invoice` Structure.
-    - 1 ⌛ `InvoiceItem` model -> [cProd, cEAN, xProd, NCM, CFOP, uCom, qCom, vUnCom, vProd, indTot]
-    - 2 ⌛ `InvoiceItemTotal` model -> [vICMS, vIPI, VII, VIOF, vTotTrib]
-    - 2 ⌛ `InvoiceTotal` model -> [vBC, vICMS, vIPI, VII, VIOF, vPIS, vCOFINS, vOutro, vNF, vTotTrib]
+  - ✅ Create models that revolve around with `Invoice` Structure.
+    - 1 ✅ `InvoiceItem` model -> [cProd, cEAN, xProd, NCM, CFOP, uCom, qCom, vUnCom, vProd, indTot]
+    - 2 ✅ `InvoiceItemTotal` model -> [vICMS, vIPI, VII, VIOF, vTotTrib]
+    - 2 ✅ `InvoiceTotal` model -> [vBC, vICMS, vIPI, VII, VIOF, vPIS, vCOFINS, vOutro, vNF, vTotTrib]
 
 - Extra:
   - ✅ Create specs for the whole flow of Services.
   - ✅ Create specs for the job execution.
+  - ✅ Setup `ActiveStorage` and create `Document` Model.
 
 ### 004: Invoice Reports Screen
 

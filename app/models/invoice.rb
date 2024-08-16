@@ -31,6 +31,7 @@ class Invoice < ApplicationRecord
   belongs_to :dest, class_name: "InvoiceEntity"
 
   has_one :invoice_total
+  has_many :invoice_items
 
   # @validations ..............................................................
   validates :cUF, :cNF, :mod, :serie, :nNF, :dhEmi, :tpNF, presence: true
