@@ -71,14 +71,18 @@ The creation of this app ...
 ### 004: Invoice Reports Screen
 
 - Subtasks:
-  - ⌛ Create `Invoice::ReportService` that processes `Report`s.
-  - ⌛ Create an `InvoiceReport` `Sidekiq` Job.
-    - 1 ⌛ `Report` based on all invoices uploaded.
-    - 2 ⌛ Provide `Report` download to user in `excel` format.
-  - ⌛ The created `Report` should follow a given structure.
-    - 1 ⌛ Dados da Nota Fiscal: Número de Série (serie), Número da Nota Fiscal (nNF), Data e Hora de Emissão (dhEmi), Dados do Emitente (emit) e do Destinatário (dest). 2 ⌛ Produtos Listados: Nome (xProd), NCM (NCM), CFOP (CFOP), Unidade Comercializada (uCom), Quantidade Comercializada (qCom), Valor Unitário (vUnCom).
-    - 3 ⌛ Impostos Associados: Valor do ICMS (vICMS), Valor do IPI (vIPI), Valor do PIS (vPIS), Valor do COFINS (vCOFINS).
+  - ✅ Create `Batch` model that has_many `invoices` through n to n.
+  - ✅ Create `InvoiceBatch` join table model `Invoice` and `Batch`.
+  - ⌛ Use `Batch` model to create finders of all data of collected `invoice`s in given structure.
+    - 1 ⌛ Dados da Nota Fiscal: [serie, nNF, dhEmi, emit, dest].
+    - 2 ⌛ Produtos Listados: [xProd, NCM, CFOP, uCom, qCom, vUnCom].
+    - 3 ⌛ Impostos Associados: [vICMS, vIPI, vPIS, vCOFINS].
     - 4 ⌛ Totalizadores: Resumo dos valores totais dos produtos e impostos.
+  - ⌛ Create `Invoice::ReportService` that generates `report`s.
+  - ⌛ Attach the generated report from `Invoice::ReportService` to `Batch` model.
+  - ⌛ Create `Report` controller and views from `Batch` model.
+  - ⌛ Create an `InvoiceReport` `Sidekiq` Job.
+  - ⌛ Provide `report` download to user in `excel` format.
 
 - Extra:
   - ⌛ Be.

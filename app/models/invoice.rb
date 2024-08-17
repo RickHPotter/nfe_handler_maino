@@ -32,6 +32,8 @@ class Invoice < ApplicationRecord
 
   has_one :invoice_total
   has_many :invoice_items
+  has_many :invoice_batches
+  has_many :batches, through: :invoice_batches
 
   # @validations ..............................................................
   validates :cUF, :cNF, :mod, :serie, :nNF, :dhEmi, :tpNF, presence: true
