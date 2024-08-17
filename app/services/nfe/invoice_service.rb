@@ -9,11 +9,11 @@ module Nfe
       @current_user = current_user
       @document = Document.find(document_id)
 
-      @nfe_data = extracted_nfe.extract_invoice_data
-      @nfe_entities = { emit: extracted_nfe.extract_invoice_entity(:emit), dest: extracted_nfe.extract_invoice_entity(:dest) }
-      @nfe_addresses = { emit: extracted_nfe.extract_invoice_address(:emit), dest: extracted_nfe.extract_invoice_address(:dest) }
-      @nfe_totals = extracted_nfe.extract_invoice_totals
-      # @nfe_items = extracted_nfe.extract_invoice_items
+      @nfe_data = @nfe.extract_invoice_data
+      @nfe_entities = { emit: @nfe.extract_invoice_entity(:emit), dest: @nfe.extract_invoice_entity(:dest) }
+      @nfe_addresses = { emit: @nfe.extract_entity_address(:emit), dest: @nfe.extract_entity_address(:dest) }
+      @nfe_totals = @nfe.extract_invoice_totals
+      @nfe_items = @nfe.extract_invoice_items
     end
 
     def run
@@ -31,7 +31,8 @@ module Nfe
         emit_attributes: build_invoice_entities(:emit),
         dest_attributes: build_invoice_entities(:dest),
         processed_at: DateTime.current,
-        invoice_total_attributes: build_invoice_totals
+        invoice_total_attributes: build_invoice_totals,
+        invoice_items_attributes: build_invoice_items
       }.compact_blank
     end
 
@@ -47,12 +48,8 @@ module Nfe
       @nfe_totals.compact_blank
     end
 
-    # def build_invoice_items
-    #   @nfe_items.each(&:compact_blank)
-    # end
-    #
-    # def build_invoice_items_totals
-    #   @nfe_items_totals.each(&:compact_blank)
-    # end
+    def build_invoice_items
+      @nfe_items.each(&:compact_blank)
+    end
   end
 end

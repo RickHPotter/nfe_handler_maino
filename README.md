@@ -57,11 +57,10 @@ The creation of this app ...
   - ✅ Create a `Sidekiq` `Xml::ProcessingJob` for the `XmlExtractionService` Service.
   - ✅ Create a `Sidekiq` `Nfe::InvoiceJob` for the `InvoiceExtractionService` Service.
   - ✅ Fire `Nfe::InvoiceJob` as soon as `Xml::ProcessingJob` finishes processing an `xml`.
-
   - ✅ Create models that revolve around with `Invoice` Structure.
     - 1 ✅ `InvoiceItem` model -> [cProd, cEAN, xProd, NCM, CFOP, uCom, qCom, vUnCom, vProd, indTot]
     - 2 ✅ `InvoiceItemTotal` model -> [vICMS, vIPI, VII, VIOF, vTotTrib]
-    - 2 ✅ `InvoiceTotal` model -> [vBC, vICMS, vIPI, VII, VIOF, vPIS, vCOFINS, vOutro, vNF, vTotTrib]
+    - 3 ✅ `InvoiceTotal` model -> [vBC, vICMS, vIPI, VII, VIOF, vPIS, vCOFINS, vOutro, vNF, vTotTrib]
 
 - Extra:
   - ✅ Create specs for the whole flow of Services.
@@ -73,11 +72,12 @@ The creation of this app ...
 - Subtasks:
   - ✅ Create `Batch` model that has_many `invoices` through n to n.
   - ✅ Create `InvoiceBatch` join table model `Invoice` and `Batch`.
+  - ✅ Adjust `Nfe::InvoiceService` to also process for models `InvoiceItem`, `InvoiceItemTotal` and `InvoiceTotal`.
   - ⌛ Use `Batch` model to create finders of all data of collected `invoice`s in given structure.
-    - 1 ⌛ Dados da Nota Fiscal: [serie, nNF, dhEmi, emit, dest].
-    - 2 ⌛ Produtos Listados: [xProd, NCM, CFOP, uCom, qCom, vUnCom].
-    - 3 ⌛ Impostos Associados: [vICMS, vIPI, vPIS, vCOFINS].
-    - 4 ⌛ Totalizadores: Resumo dos valores totais dos produtos e impostos.
+    - 1 ⌛ _Dados da Nota Fiscal_: [serie, nNF, dhEmi, emit, dest].
+    - 2 ⌛ _Produtos Listados_: [xProd, NCM, CFOP, uCom, qCom, vUnCom].
+    - 3 ⌛ _Impostos Associados_: [vICMS, vIPI, vPIS, vCOFINS].
+    - 4 ⌛ _Totalizadores_: Summary of item totals and item taxes.
   - ⌛ Create `Invoice::ReportService` that generates `report`s.
   - ⌛ Attach the generated report from `Invoice::ReportService` to `Batch` model.
   - ⌛ Create `Report` controller and views from `Batch` model.

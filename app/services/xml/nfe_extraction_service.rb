@@ -32,28 +32,50 @@ module Xml
       }
     end
 
-    def extract_invoice_address(entity)
+    def extract_entity_address(entity)
       head = "//xmlns:#{entity}/xmlns:ender#{entity.capitalize}/xmlns"
       {
-        xLgr: @xml.xpath("#{head}:xLgr").text,
-        nro: @xml.xpath("#{head}:nro").text,
-        xCpl: @xml.xpath("#{head}:xCpl").text,
-        xBairro: @xml.xpath("#{head}:xBairro").text,
-        cMun: @xml.xpath("#{head}:cMun").text,
-        xMun: @xml.xpath("#{head}:xMun").text,
-        uF: @xml.xpath("#{head}:UF").text,
-        cEP: @xml.xpath("#{head}:CEP").text,
-        cPais: @xml.xpath("#{head}:cPais").text,
-        xPais: @xml.xpath("#{head}:xPais").text,
-        fone: @xml.xpath("#{head}:fone").text
-      }
+        xLgr: @xml.xpath("#{head}:xLgr"),
+        nro: @xml.xpath("#{head}:nro"),
+        xCpl: @xml.xpath("#{head}:xCpl"),
+        xBairro: @xml.xpath("#{head}:xBairro"),
+        cMun: @xml.xpath("#{head}:cMun"),
+        xMun: @xml.xpath("#{head}:xMun"),
+        uF: @xml.xpath("#{head}:UF"),
+        cEP: @xml.xpath("#{head}:CEP"),
+        cPais: @xml.xpath("#{head}:cPais"),
+        xPais: @xml.xpath("#{head}:xPais"),
+        fone: @xml.xpath("#{head}:fone")
+      }.transform_values(&:text)
     end
 
-    # def extract_invoice_items
-    # end
-    #
-    # def extract_invoice_item_totals
-    # end
+    def extract_invoice_items
+      @xml.xpath("//xmlns:det").map do |item|
+        {
+          cProd: item.xpath(".//xmlns:cProd"),
+          cEAN: item.xpath(".//xmlns:cEAN"),
+          xProd: item.xpath(".//xmlns:xProd"),
+          nCM: item.xpath(".//xmlns:NCM"),
+          cFOP: item.xpath(".//xmlns:CFOP"),
+          uCom: item.xpath(".//xmlns:uCom"),
+          qCom: item.xpath(".//xmlns:qCom"),
+          vUnCom: item.xpath(".//xmlns:vUnCom"),
+          vProd: item.xpath(".//xmlns:vProd"),
+          indTot: item.xpath(".//xmlns:indTot")
+        }.transform_values(&:text)
+          .merge(invoice_item_total_attributes: extract_invoice_item_totals(item))
+      end
+    end
+
+    def extract_invoice_item_totals(item)
+      {
+        vICMS: item.xpath(".//xmlns:imposto/xmlns:ICMS//xmlns:vICMS"),
+        vIPI: item.xpath(".//xmlns:imposto/xmlns:IPI//xmlns:vIPI"),
+        vII: item.xpath(".//xmlns:imposto/xmlns:II/xmlns:vII"),
+        vIOF: item.xpath(".//xmlns:imposto/xmlns:II/xmlns:vIOF"),
+        vTotTrib: item.xpath(".//xmlns:imposto//xmlns:vTotTrib")
+      }.transform_values { |value| value.text.to_f }
+    end
 
     def extract_invoice_totals
       {

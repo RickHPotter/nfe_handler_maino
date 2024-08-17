@@ -79,6 +79,32 @@ RSpec.describe Nfe::InvoiceService, type: :service do
     expect(invoice_total_attributes).to eq(extracted_xml)
   end
 
+  def expect_invoice_items_totals_to_match(invoice_items:, extracted_xml:)
+    invoice_items_attributes = invoice_items.map do |invoice_item|
+      {
+        cProd: invoice_item.cProd,
+        cEAN: invoice_item.cEAN,
+        xProd: invoice_item.xProd,
+        nCM: invoice_item.nCM,
+        cFOP: invoice_item.cFOP,
+        uCom: invoice_item.uCom,
+        qCom: format("%.4f", invoice_item.qCom),
+        vUnCom: format("%.10f", invoice_item.vUnCom),
+        vProd: format("%.2f", invoice_item.vProd),
+        indTot: invoice_item.indTot,
+        invoice_item_total_attributes: {
+          vICMS: invoice_item.invoice_item_total.vICMS,
+          vIPI: invoice_item.invoice_item_total.vIPI,
+          vII: invoice_item.invoice_item_total.vII,
+          vIOF: invoice_item.invoice_item_total.vIOF,
+          vTotTrib: invoice_item.invoice_item_total.vTotTrib
+        }
+      }.transform_values { |value| value.nil? ? "" : value }
+    end
+
+    expect(invoice_items_attributes).to eq(extracted_xml)
+  end
+
   describe "#run" do
     before { nfe_service.run }
 
@@ -110,14 +136,20 @@ RSpec.describe Nfe::InvoiceService, type: :service do
     it "creates entity addresses with correct details" do
       invoice = Invoice.first
 
-      expect_entity_address_to_match(entity_address: invoice.emit.ender, extracted_xml: xml_service.extract_invoice_address(:emit))
-      expect_entity_address_to_match(entity_address: invoice.dest.ender, extracted_xml: xml_service.extract_invoice_address(:dest))
+      expect_entity_address_to_match(entity_address: invoice.emit.ender, extracted_xml: xml_service.extract_entity_address(:emit))
+      expect_entity_address_to_match(entity_address: invoice.dest.ender, extracted_xml: xml_service.extract_entity_address(:dest))
     end
 
     it "creates invoice totals with correct details" do
       invoice = Invoice.first
 
       expect_invoice_total_to_match(invoice_total: invoice.invoice_total, extracted_xml: xml_service.extract_invoice_totals)
+    end
+
+    it "creates invoice items and invoice items totals with correct details" do
+      invoice = Invoice.first
+
+      expect_invoice_items_totals_to_match(invoice_items: invoice.invoice_items, extracted_xml: xml_service.extract_invoice_items)
     end
   end
 end

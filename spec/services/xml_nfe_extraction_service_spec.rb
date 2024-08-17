@@ -43,9 +43,9 @@ RSpec.describe Xml::NfeExtractionService, type: :service do
     end
   end
 
-  describe "#extract_invoice_address" do
+  describe "#extract_entity_address" do
     it "correctly extracts the invoice address data from the XML" do
-      extracted_data = service.extract_invoice_address(:emit)
+      extracted_data = service.extract_entity_address(:emit)
       expect(extracted_data).to eq(
         xLgr: address_data.xLgr,
         nro: address_data.nro,
