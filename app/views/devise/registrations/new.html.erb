@@ -1,8 +1,8 @@
 <% content_for(:auth_header) do %>
-  <h2 class='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>Create your account</h2>
+  <h2 class='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'><%= t("devise.registrations.new.label") %></h2>
   <p class='mt-2 text-center text-sm text-gray-600'>
-    Have an account already?
-    <%= link_to "Log in", new_session_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+    <%= t("devise.registrations.new.have_an_account_already") %>
+    <%= link_to I18n.t("devise.shared.links.sign_in"), new_session_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
   </p>
 <% end %>
 
@@ -11,30 +11,30 @@
   <%= render "devise/shared/error_messages", resource: %>
 
   <div class="mb-6 text-blue-700">
-    <%= custom_text_field(f, :first_name, svg: :user, placeholder: "First Name", autofocus: true) %>
+    <%= custom_text_field(f, :first_name, svg: :user, placeholder: attribute_model(f.object, :first_name), autofocus: true) %>
   </div>
 
   <div class="mb-6 text-blue-700">
-    <%= custom_text_field(f, :last_name, svg: :user_group, placeholder: "Last Name") %>
+    <%= custom_text_field(f, :last_name, svg: :user_group, placeholder: attribute_model(f.object, :last_name)) %>
   </div>
 
   <div class="mb-6 text-blue-700">
-    <%= custom_text_field(f, :email, type: :email, svg: :email, placeholder: "Email Address") %>
+    <%= custom_text_field(f, :email, type: :email, svg: :email, placeholder: attribute_model(f.object, :email)) %>
   </div>
 
   <div class="mb-6 text-blue-700">
-    <%= custom_text_field(f, :password, type: :password, svg: :key, placeholder: "Password") %>
+    <%= custom_text_field(f, :password, type: :password, svg: :key, placeholder: attribute_model(f.object, :password)) %>
   </div>
 
   <div class="mb-6 text-blue-700">
-    <%= custom_text_field(f, :password_confirmation, type: :password, svg: :key, placeholder: "Password Confirmation") %>
+    <%= custom_text_field(f, :password_confirmation, type: :password, svg: :key, placeholder: attribute_model(f.object, :password_confirmation)) %>
 
     <% if @minimum_password_length %>
-      <span class='text-xs font-graduate text-gray-500'>(<%= @minimum_password_length %> characters minimum)</span>
+      <span class='text-xs font-graduate text-gray-500'>(<%= I18n.t("devise.shared.minimum_password_length", count: @minimum_password_length) %>)</span>
     <% end %>
   </div>
 
   <div>
-    <%= submit_button(f, label: "Sign up") %>
+    <%= submit_button(f, label: I18n.t("devise.registrations.new.sign_up")) %>
   </div>
 <% end %>

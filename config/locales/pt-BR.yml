@@ -2,10 +2,9 @@ pt-BR:
   nav:
     about: "Sobre"
 
-  devise:
-    sign_up: "Inscrever-se"
-    login: "Login"
-    logout: "Sair"
+  flash:
+    notice: "Sucesso"
+    alert: "Atenção"
 
   links:
     show: "Mostrar"

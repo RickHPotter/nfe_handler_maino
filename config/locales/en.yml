@@ -2,6 +2,10 @@ en:
   nav:
     about: "About"
 
+  flash:
+    notice: "Success"
+    alert: "Attention"
+
   devise:
     sign_up: "Sign Up"
     login: "Login"

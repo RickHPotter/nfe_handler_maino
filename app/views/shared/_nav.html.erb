@@ -19,7 +19,7 @@
           <%= link_to I18n.t("nav.about"), "https://github.com/RickHPotter", class: "md:p-4 py-2 block hover:text-purple-400", target: "_blank" %>
         </li>
         <li>
-          <%= link_to I18n.t("devise.logout"), destroy_user_session_path, data: { turbo_method: :delete }, class: "md:p-4 py-2 block hover:text-purple-400 text-purple-500" %>
+          <%= link_to I18n.t("devise.shared.links.sign_out"), destroy_user_session_path, data: { turbo_method: :delete }, class: "md:p-4 py-2 block hover:text-purple-400 text-purple-500" %>
         </li>
       </ul>
     </div>

@@ -104,6 +104,8 @@ pt-BR:
         we_need_your_current_password_to_confirm_your_changes: precisamos da sua senha atual para confirmar suas mudanças
       new:
         sign_up: Inscrever-se
+        label: Crie sua conta
+        have_an_account_already: Já tem uma conta?
       signed_up: Bem vindo! Você realizou seu registro com sucesso.
       signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
       signed_up_but_locked: Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.
@@ -115,6 +117,7 @@ pt-BR:
       already_signed_out: Logout efetuado com sucesso.
       new:
         sign_in: Login
+        create_an_account: Crie uma conta GRATUITA
       signed_in: Login efetuado com sucesso.
       signed_out: Logout efetuado com sucesso.
     shared:
@@ -126,6 +129,7 @@ pt-BR:
         sign_in: Login
         sign_in_with_provider: Entrar com %{provider}
         sign_up: Inscrever-se
+        sign_out: Sair
       minimum_password_length:
         one: "(Mínimo de %{count} caractere)"
         other: "(Mínimo de %{count} caracteres)"

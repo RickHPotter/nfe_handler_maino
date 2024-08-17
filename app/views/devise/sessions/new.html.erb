@@ -1,9 +1,10 @@
 <% content_for(:auth_header) do %>
-  <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in</h2>
+  <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900"><%= t("devise.sessions.new.sign_in") %></h2>
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <p class="mt-2 text-center text-sm text-gray-600">
-      Or
-      <%= link_to "create your account for FREE", new_registration_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+      ||
+      <%= link_to I18n.t("devise.sessions.new.create_an_account"), new_registration_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+      ||
     </p>
   <% end %>
 <% end %>
@@ -11,11 +12,11 @@
 <%= form_for resource, as: resource_name, url: session_path(resource_name), data: { turbo: false, controller: "form-validate" } do |f| %>
 
   <div class="mb-6 text-blue-700">
-    <%= custom_text_field(f, :email, type: :email, svg: :email, autofocus: true, placeholder: "Email Address") %>
+    <%= custom_text_field(f, :email, type: :email, svg: :email, autofocus: true, placeholder: attribute_model(f.object, :email)) %>
   </div>
 
   <div class="mb-6 text-blue-700">
-    <%= custom_text_field(f, :password, type: :password, svg: :key, placeholder: "Password") %>
+    <%= custom_text_field(f, :password, type: :password, svg: :key, placeholder: attribute_model(f.object, :password)) %>
   </div>
 
   <div class="flex items-center justify-between mb-6">
@@ -28,12 +29,12 @@
 
     <%- if devise_mapping.recoverable? && controller_name != "passwords" && controller_name != "registrations" %>
       <div class="text-sm">
-        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+        <%= link_to I18n.t("devise.shared.links.forgot_your_password"), new_password_path(resource_name), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
       </div>
     <% end %>
   </div>
 
   <div>
-    <%= submit_button(f, label: "Log in") %>
+    <%= submit_button(f, label: I18n.t("devise.shared.links.sign_in")) %>
   </div>
 <% end %>
