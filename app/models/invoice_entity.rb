@@ -22,6 +22,8 @@ class InvoiceEntity < ApplicationRecord
   # @relationships ............................................................
   belongs_to :ender, class_name: "EntityAddress"
 
+  accepts_nested_attributes_for :ender
+
   # @validations ..............................................................
   validates :cNPJ, :xNome, presence: true
   validates :xNome, length: { in: 2..60 }

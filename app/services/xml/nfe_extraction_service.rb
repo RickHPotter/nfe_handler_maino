@@ -2,6 +2,8 @@
 
 module Xml
   class NfeExtractionService
+    attr_reader :xml
+
     def initialize(xml_content)
       @xml = Nokogiri::XML(xml_content)
     end
@@ -45,6 +47,27 @@ module Xml
         xPais: @xml.xpath("#{head}:xPais").text,
         fone: @xml.xpath("#{head}:fone").text
       }
+    end
+
+    # def extract_invoice_items
+    # end
+    #
+    # def extract_invoice_item_totals
+    # end
+
+    def extract_invoice_totals
+      {
+        vBC: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vBC"),
+        vICMS: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vICMS"),
+        vIPI: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vIPI"),
+        vII: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vII"),
+        vIOF: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vIOF"),
+        vPIS: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vPIS"),
+        vCOFINS: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vCOFINS"),
+        vOutro: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vOutro"),
+        vNF: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vNF"),
+        vTotTrib: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vTotTrib")
+      }.transform_values { |value| value.text.to_f }
     end
   end
 end

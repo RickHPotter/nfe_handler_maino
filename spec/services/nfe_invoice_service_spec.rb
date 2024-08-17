@@ -60,6 +60,25 @@ RSpec.describe Nfe::InvoiceService, type: :service do
     expect(entity_address_attributes).to eq(extracted_xml)
   end
 
+  def expect_invoice_total_to_match(invoice_total:, extracted_xml:)
+    invoice_total_attributes = {
+      vBC: invoice_total.vBC,
+      vICMS: invoice_total.vICMS,
+      vIPI: invoice_total.vIPI,
+      vII: invoice_total.vII,
+      vIOF: invoice_total.vIOF,
+      vPIS: invoice_total.vPIS,
+      vCOFINS: invoice_total.vCOFINS,
+      vOutro: invoice_total.vOutro,
+      vNF: invoice_total.vNF,
+      vTotTrib: invoice_total.vTotTrib
+    }
+
+    invoice_total_attributes.each { |k, v| invoice_total_attributes[k] = "" if v.nil? }
+
+    expect(invoice_total_attributes).to eq(extracted_xml)
+  end
+
   describe "#run" do
     before { nfe_service.run }
 
@@ -93,6 +112,12 @@ RSpec.describe Nfe::InvoiceService, type: :service do
 
       expect_entity_address_to_match(entity_address: invoice.emit.ender, extracted_xml: xml_service.extract_invoice_address(:emit))
       expect_entity_address_to_match(entity_address: invoice.dest.ender, extracted_xml: xml_service.extract_invoice_address(:dest))
+    end
+
+    it "creates invoice totals with correct details" do
+      invoice = Invoice.first
+
+      expect_invoice_total_to_match(invoice_total: invoice.invoice_total, extracted_xml: xml_service.extract_invoice_totals)
     end
   end
 end

@@ -35,6 +35,11 @@ class Invoice < ApplicationRecord
   has_many :invoice_batches
   has_many :batches, through: :invoice_batches
 
+  accepts_nested_attributes_for :emit
+  accepts_nested_attributes_for :dest
+  accepts_nested_attributes_for :invoice_total
+  accepts_nested_attributes_for :invoice_items
+
   # @validations ..............................................................
   validates :cUF, :cNF, :mod, :serie, :nNF, :dhEmi, :tpNF, presence: true
   validates :cUF, length: { maximum: 2 }
