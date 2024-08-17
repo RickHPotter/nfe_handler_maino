@@ -6,51 +6,60 @@ module Xml
 
     def initialize(xml_content)
       @xml = Nokogiri::XML(xml_content)
+      @ide = @xml.xpath("//xmlns:ide")
+      @emit = @xml.xpath("//xmlns:emit")
+      @dest = @xml.xpath("//xmlns:dest")
+
+      @emit_address = @emit.xpath("./xmlns:enderEmit")
+      @dest_address = @dest.xpath("./xmlns:enderDest")
+
+      @items = @xml.xpath("//xmlns:det")
+      @total = @xml.xpath("//xmlns:total/xmlns:ICMSTot")
     end
 
     def extract_invoice_data
       {
-        cUF: @xml.xpath("//xmlns:ide/xmlns:cUF").text,
-        cNF: @xml.xpath("//xmlns:ide/xmlns:cNF").text,
-        mod: @xml.xpath("//xmlns:ide/xmlns:mod").text,
-        serie: @xml.xpath("//xmlns:ide/xmlns:serie").text,
-        nNF: @xml.xpath("//xmlns:ide/xmlns:nNF").text,
-        tpNF: @xml.xpath("//xmlns:ide/xmlns:tpNF").text,
-        dhEmi: @xml.xpath("//xmlns:ide/xmlns:dhEmi").text
-      }
+        cUF: @ide.xpath("./xmlns:cUF"),
+        cNF: @ide.xpath("./xmlns:cNF"),
+        mod: @ide.xpath("./xmlns:mod"),
+        serie: @ide.xpath("./xmlns:serie"),
+        nNF: @ide.xpath("./xmlns:nNF"),
+        tpNF: @ide.xpath("./xmlns:tpNF"),
+        dhEmi: @ide.xpath("./xmlns:dhEmi")
+      }.transform_values(&:text)
     end
 
     def extract_invoice_entity(entity)
-      head = "//xmlns:#{entity}/xmlns"
+      entity = entity == :emit ? @emit : @dest
       {
-        cNPJ: @xml.xpath("#{head}:CNPJ").text,
-        xNome: @xml.xpath("#{head}:xNome").text,
-        xFant: @xml.xpath("#{head}:xFant").text,
-        iE: @xml.xpath("#{head}:IE").text,
-        cRT: @xml.xpath("#{head}:CRT").text,
-        indIEDest: @xml.xpath("#{head}:indIEDest").text
-      }
+        cNPJ: entity.xpath("./xmlns:CNPJ"),
+        xNome: entity.xpath("./xmlns:xNome"),
+        xFant: entity.xpath("./xmlns:xFant"),
+        iE: entity.xpath("./xmlns:IE"),
+        cRT: entity.xpath("./xmlns:CRT"),
+        indIEDest: entity.xpath("./xmlns:indIEDest")
+      }.transform_values(&:text)
     end
 
     def extract_entity_address(entity)
-      head = "//xmlns:#{entity}/xmlns:ender#{entity.capitalize}/xmlns"
+      address = entity == :emit ? @emit_address : @dest_address
       {
-        xLgr: @xml.xpath("#{head}:xLgr"),
-        nro: @xml.xpath("#{head}:nro"),
-        xCpl: @xml.xpath("#{head}:xCpl"),
-        xBairro: @xml.xpath("#{head}:xBairro"),
-        cMun: @xml.xpath("#{head}:cMun"),
-        xMun: @xml.xpath("#{head}:xMun"),
-        uF: @xml.xpath("#{head}:UF"),
-        cEP: @xml.xpath("#{head}:CEP"),
-        cPais: @xml.xpath("#{head}:cPais"),
-        xPais: @xml.xpath("#{head}:xPais"),
-        fone: @xml.xpath("#{head}:fone")
+        xLgr: address.xpath("./xmlns:xLgr"),
+        nro: address.xpath("./xmlns:nro"),
+        xCpl: address.xpath("./xmlns:xCpl"),
+        xBairro: address.xpath("./xmlns:xBairro"),
+        cMun: address.xpath("./xmlns:cMun"),
+        xMun: address.xpath("./xmlns:xMun"),
+        uF: address.xpath("./xmlns:UF"),
+        cEP: address.xpath("./xmlns:CEP"),
+        cPais: address.xpath("./xmlns:cPais"),
+        xPais: address.xpath("./xmlns:xPais"),
+        fone: address.xpath("./xmlns:fone")
       }.transform_values(&:text)
     end
 
     def extract_invoice_items
-      @xml.xpath("//xmlns:det").map do |item|
+      @items.map do |item|
         {
           cProd: item.xpath(".//xmlns:cProd"),
           cEAN: item.xpath(".//xmlns:cEAN"),
@@ -62,33 +71,32 @@ module Xml
           vUnCom: item.xpath(".//xmlns:vUnCom"),
           vProd: item.xpath(".//xmlns:vProd"),
           indTot: item.xpath(".//xmlns:indTot")
-        }.transform_values(&:text)
-          .merge(invoice_item_total_attributes: extract_invoice_item_totals(item))
+        }.transform_values(&:text).merge(invoice_item_total_attributes: extract_invoice_item_totals(item))
       end
     end
 
     def extract_invoice_item_totals(item)
       {
-        vICMS: item.xpath(".//xmlns:imposto/xmlns:ICMS//xmlns:vICMS"),
-        vIPI: item.xpath(".//xmlns:imposto/xmlns:IPI//xmlns:vIPI"),
-        vII: item.xpath(".//xmlns:imposto/xmlns:II/xmlns:vII"),
-        vIOF: item.xpath(".//xmlns:imposto/xmlns:II/xmlns:vIOF"),
-        vTotTrib: item.xpath(".//xmlns:imposto//xmlns:vTotTrib")
+        vICMS: item.xpath("./xmlns:imposto/xmlns:ICMS//xmlns:vICMS"),
+        vIPI: item.xpath("./xmlns:imposto/xmlns:IPI//xmlns:vIPI"),
+        vII: item.xpath("./xmlns:imposto/xmlns:II/xmlns:vII"),
+        vIOF: item.xpath("./xmlns:imposto/xmlns:II/xmlns:vIOF"),
+        vTotTrib: item.xpath("./xmlns:imposto//xmlns:vTotTrib")
       }.transform_values { |value| value.text.to_f }
     end
 
     def extract_invoice_totals
       {
-        vBC: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vBC"),
-        vICMS: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vICMS"),
-        vIPI: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vIPI"),
-        vII: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vII"),
-        vIOF: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vIOF"),
-        vPIS: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vPIS"),
-        vCOFINS: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vCOFINS"),
-        vOutro: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vOutro"),
-        vNF: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vNF"),
-        vTotTrib: @xml.xpath("//xmlns:total/xmlns:ICMSTot/xmlns:vTotTrib")
+        vBC: @total.xpath("./xmlns:vBC"),
+        vICMS: @total.xpath("./xmlns:vICMS"),
+        vIPI: @total.xpath("./xmlns:vIPI"),
+        vII: @total.xpath("./xmlns:vII"),
+        vIOF: @total.xpath("./xmlns:vIOF"),
+        vPIS: @total.xpath("./xmlns:vPIS"),
+        vCOFINS: @total.xpath("./xmlns:vCOFINS"),
+        vOutro: @total.xpath("./xmlns:vOutro"),
+        vNF: @total.xpath("./xmlns:vNF"),
+        vTotTrib: @total.xpath("./xmlns:vTotTrib")
       }.transform_values { |value| value.text.to_f }
     end
   end

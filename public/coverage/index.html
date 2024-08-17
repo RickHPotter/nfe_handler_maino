@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-08-17T19:52:51-03:00">2024-08-17T19:52:51-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-08-17T21:16:40-03:00">2024-08-17T21:16:40-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  95.85%
+  95.97%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.98
+         3.21
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>241</b> relevant lines,
-    <span class="green"><b>231</b> lines covered</span> and
+    <b>248</b> relevant lines,
+    <span class="green"><b>238</b> lines covered</span> and
     <span class="red"><b>10</b> lines missed. </span>
     (<span class="green">
-  95.85%
+  95.97%
 </span>
 )
   </div>
@@ -227,11 +227,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c9cd9a25d383ac088eebd472c4e630fc852025f8" class="src_link" title="app/services/xml/nfe_extraction_service.rb">app/services/xml/nfe_extraction_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">95</td>
-            <td class="cell--number">22</td>
-            <td class="cell--number">22</td>
+            <td class="cell--number">103</td>
+            <td class="cell--number">29</td>
+            <td class="cell--number">29</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">14.45</td>
+            <td class="cell--number">13.62</td>
             
           </tr>
         
@@ -6486,8 +6486,8 @@
     
 
     <div class="t-line-summary">
-      <b>22</b> relevant lines.
-      <span class="green"><b>22</b> lines covered</span> and
+      <b>29</b> relevant lines.
+      <span class="green"><b>29</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -6587,35 +6587,35 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="9">
-            
-            
-
+          <li class="covered" data-hits="11" data-linenumber="9">
+            <span class="hits">11</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      @ide = @xml.xpath(&quot;//xmlns:ide&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
+          <li class="covered" data-hits="11" data-linenumber="10">
+            <span class="hits">11</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      @emit = @xml.xpath(&quot;//xmlns:emit&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="11" data-linenumber="11">
+            <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    def extract_invoice_data</code>
+            <code class="ruby">      @dest = @xml.xpath(&quot;//xmlns:dest&quot;)</code>
           </li>
         </div>
       
@@ -6626,29 +6626,29 @@
 
             
 
-            <code class="ruby">      {</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="13">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="11" data-linenumber="13">
+            <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">        cUF: @xml.xpath(&quot;//xmlns:ide/xmlns:cUF&quot;).text,</code>
+            <code class="ruby">      @emit_address = @emit.xpath(&quot;./xmlns:enderEmit&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
-            
-            
-
+          <li class="covered" data-hits="11" data-linenumber="14">
+            <span class="hits">11</span>
             
 
-            <code class="ruby">        cNF: @xml.xpath(&quot;//xmlns:ide/xmlns:cNF&quot;).text,</code>
+            
+
+            <code class="ruby">      @dest_address = @dest.xpath(&quot;./xmlns:enderDest&quot;)</code>
           </li>
         </div>
       
@@ -6659,29 +6659,29 @@
 
             
 
-            <code class="ruby">        mod: @xml.xpath(&quot;//xmlns:ide/xmlns:mod&quot;).text,</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
-            
-            
-
+          <li class="covered" data-hits="11" data-linenumber="16">
+            <span class="hits">11</span>
             
 
-            <code class="ruby">        serie: @xml.xpath(&quot;//xmlns:ide/xmlns:serie&quot;).text,</code>
+            
+
+            <code class="ruby">      @items = @xml.xpath(&quot;//xmlns:det&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="17">
-            
-            
-
+          <li class="covered" data-hits="11" data-linenumber="17">
+            <span class="hits">11</span>
             
 
-            <code class="ruby">        nNF: @xml.xpath(&quot;//xmlns:ide/xmlns:nNF&quot;).text,</code>
+            
+
+            <code class="ruby">      @total = @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot&quot;)</code>
           </li>
         </div>
       
@@ -6692,7 +6692,7 @@
 
             
 
-            <code class="ruby">        tpNF: @xml.xpath(&quot;//xmlns:ide/xmlns:tpNF&quot;).text,</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -6703,18 +6703,18 @@
 
             
 
-            <code class="ruby">        dhEmi: @xml.xpath(&quot;//xmlns:ide/xmlns:dhEmi&quot;).text</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      }</code>
+            
+
+            <code class="ruby">    def extract_invoice_data</code>
           </li>
         </div>
       
@@ -6725,40 +6725,40 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      {</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
-            
-            
-
+          <li class="covered" data-hits="10" data-linenumber="22">
+            <span class="hits">10</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        cUF: @ide.xpath(&quot;./xmlns:cUF&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="23">
+            
             
 
             
 
-            <code class="ruby">    def extract_invoice_entity(entity)</code>
+            <code class="ruby">        cNF: @ide.xpath(&quot;./xmlns:cNF&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="17" data-linenumber="24">
-            <span class="hits">17</span>
+          <li class="never" data-hits="" data-linenumber="24">
+            
             
 
             
 
-            <code class="ruby">      head = &quot;//xmlns:#{entity}/xmlns&quot;</code>
+            <code class="ruby">        mod: @ide.xpath(&quot;./xmlns:mod&quot;),</code>
           </li>
         </div>
       
@@ -6769,18 +6769,18 @@
 
             
 
-            <code class="ruby">      {</code>
+            <code class="ruby">        serie: @ide.xpath(&quot;./xmlns:serie&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="17" data-linenumber="26">
-            <span class="hits">17</span>
+          <li class="never" data-hits="" data-linenumber="26">
+            
             
 
             
 
-            <code class="ruby">        cNPJ: @xml.xpath(&quot;#{head}:CNPJ&quot;).text,</code>
+            <code class="ruby">        nNF: @ide.xpath(&quot;./xmlns:nNF&quot;),</code>
           </li>
         </div>
       
@@ -6791,7 +6791,7 @@
 
             
 
-            <code class="ruby">        xNome: @xml.xpath(&quot;#{head}:xNome&quot;).text,</code>
+            <code class="ruby">        tpNF: @ide.xpath(&quot;./xmlns:tpNF&quot;),</code>
           </li>
         </div>
       
@@ -6802,7 +6802,7 @@
 
             
 
-            <code class="ruby">        xFant: @xml.xpath(&quot;#{head}:xFant&quot;).text,</code>
+            <code class="ruby">        dhEmi: @ide.xpath(&quot;./xmlns:dhEmi&quot;)</code>
           </li>
         </div>
       
@@ -6813,7 +6813,7 @@
 
             
 
-            <code class="ruby">        iE: @xml.xpath(&quot;#{head}:IE&quot;).text,</code>
+            <code class="ruby">      }.transform_values(&amp;:text)</code>
           </li>
         </div>
       
@@ -6824,7 +6824,7 @@
 
             
 
-            <code class="ruby">        cRT: @xml.xpath(&quot;#{head}:CRT&quot;).text,</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -6835,29 +6835,29 @@
 
             
 
-            <code class="ruby">        indIEDest: @xml.xpath(&quot;#{head}:indIEDest&quot;).text</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="32">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      }</code>
+            
+
+            <code class="ruby">    def extract_invoice_entity(entity)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
-            
-            
-
+          <li class="covered" data-hits="17" data-linenumber="33">
+            <span class="hits">17</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      entity = entity == :emit ? @emit : @dest</code>
           </li>
         </div>
       
@@ -6868,29 +6868,29 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      {</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def extract_entity_address(entity)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="17" data-linenumber="36">
+          <li class="covered" data-hits="17" data-linenumber="35">
             <span class="hits">17</span>
             
 
             
 
-            <code class="ruby">      head = &quot;//xmlns:#{entity}/xmlns:ender#{entity.capitalize}/xmlns&quot;</code>
+            <code class="ruby">        cNPJ: entity.xpath(&quot;./xmlns:CNPJ&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="36">
+            
+            
+
+            
+
+            <code class="ruby">        xNome: entity.xpath(&quot;./xmlns:xNome&quot;),</code>
           </li>
         </div>
       
@@ -6901,18 +6901,18 @@
 
             
 
-            <code class="ruby">      {</code>
+            <code class="ruby">        xFant: entity.xpath(&quot;./xmlns:xFant&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="17" data-linenumber="38">
-            <span class="hits">17</span>
+          <li class="never" data-hits="" data-linenumber="38">
+            
             
 
             
 
-            <code class="ruby">        xLgr: @xml.xpath(&quot;#{head}:xLgr&quot;),</code>
+            <code class="ruby">        iE: entity.xpath(&quot;./xmlns:IE&quot;),</code>
           </li>
         </div>
       
@@ -6923,7 +6923,7 @@
 
             
 
-            <code class="ruby">        nro: @xml.xpath(&quot;#{head}:nro&quot;),</code>
+            <code class="ruby">        cRT: entity.xpath(&quot;./xmlns:CRT&quot;),</code>
           </li>
         </div>
       
@@ -6934,7 +6934,7 @@
 
             
 
-            <code class="ruby">        xCpl: @xml.xpath(&quot;#{head}:xCpl&quot;),</code>
+            <code class="ruby">        indIEDest: entity.xpath(&quot;./xmlns:indIEDest&quot;)</code>
           </li>
         </div>
       
@@ -6945,7 +6945,7 @@
 
             
 
-            <code class="ruby">        xBairro: @xml.xpath(&quot;#{head}:xBairro&quot;),</code>
+            <code class="ruby">      }.transform_values(&amp;:text)</code>
           </li>
         </div>
       
@@ -6956,7 +6956,7 @@
 
             
 
-            <code class="ruby">        cMun: @xml.xpath(&quot;#{head}:cMun&quot;),</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -6967,29 +6967,29 @@
 
             
 
-            <code class="ruby">        xMun: @xml.xpath(&quot;#{head}:xMun&quot;),</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="44">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">        uF: @xml.xpath(&quot;#{head}:UF&quot;),</code>
+            
+
+            <code class="ruby">    def extract_entity_address(entity)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
-            
-            
-
+          <li class="covered" data-hits="17" data-linenumber="45">
+            <span class="hits">17</span>
             
 
-            <code class="ruby">        cEP: @xml.xpath(&quot;#{head}:CEP&quot;),</code>
+            
+
+            <code class="ruby">      address = entity == :emit ? @emit_address : @dest_address</code>
           </li>
         </div>
       
@@ -7000,18 +7000,18 @@
 
             
 
-            <code class="ruby">        cPais: @xml.xpath(&quot;#{head}:cPais&quot;),</code>
+            <code class="ruby">      {</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="47">
-            
-            
-
+          <li class="covered" data-hits="17" data-linenumber="47">
+            <span class="hits">17</span>
             
 
-            <code class="ruby">        xPais: @xml.xpath(&quot;#{head}:xPais&quot;),</code>
+            
+
+            <code class="ruby">        xLgr: address.xpath(&quot;./xmlns:xLgr&quot;),</code>
           </li>
         </div>
       
@@ -7022,7 +7022,7 @@
 
             
 
-            <code class="ruby">        fone: @xml.xpath(&quot;#{head}:fone&quot;)</code>
+            <code class="ruby">        nro: address.xpath(&quot;./xmlns:nro&quot;),</code>
           </li>
         </div>
       
@@ -7033,7 +7033,7 @@
 
             
 
-            <code class="ruby">      }.transform_values(&amp;:text)</code>
+            <code class="ruby">        xCpl: address.xpath(&quot;./xmlns:xCpl&quot;),</code>
           </li>
         </div>
       
@@ -7044,7 +7044,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        xBairro: address.xpath(&quot;./xmlns:xBairro&quot;),</code>
           </li>
         </div>
       
@@ -7055,29 +7055,29 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        cMun: address.xpath(&quot;./xmlns:cMun&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="52">
+            
             
 
             
 
-            <code class="ruby">    def extract_invoice_items</code>
+            <code class="ruby">        xMun: address.xpath(&quot;./xmlns:xMun&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="53">
-            <span class="hits">8</span>
+          <li class="never" data-hits="" data-linenumber="53">
+            
             
 
             
 
-            <code class="ruby">      @xml.xpath(&quot;//xmlns:det&quot;).map do |item|</code>
+            <code class="ruby">        uF: address.xpath(&quot;./xmlns:UF&quot;),</code>
           </li>
         </div>
       
@@ -7088,18 +7088,18 @@
 
             
 
-            <code class="ruby">        {</code>
+            <code class="ruby">        cEP: address.xpath(&quot;./xmlns:CEP&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="16" data-linenumber="55">
-            <span class="hits">16</span>
+          <li class="never" data-hits="" data-linenumber="55">
+            
             
 
             
 
-            <code class="ruby">          cProd: item.xpath(&quot;.//xmlns:cProd&quot;),</code>
+            <code class="ruby">        cPais: address.xpath(&quot;./xmlns:cPais&quot;),</code>
           </li>
         </div>
       
@@ -7110,7 +7110,7 @@
 
             
 
-            <code class="ruby">          cEAN: item.xpath(&quot;.//xmlns:cEAN&quot;),</code>
+            <code class="ruby">        xPais: address.xpath(&quot;./xmlns:xPais&quot;),</code>
           </li>
         </div>
       
@@ -7121,7 +7121,7 @@
 
             
 
-            <code class="ruby">          xProd: item.xpath(&quot;.//xmlns:xProd&quot;),</code>
+            <code class="ruby">        fone: address.xpath(&quot;./xmlns:fone&quot;)</code>
           </li>
         </div>
       
@@ -7132,7 +7132,7 @@
 
             
 
-            <code class="ruby">          nCM: item.xpath(&quot;.//xmlns:NCM&quot;),</code>
+            <code class="ruby">      }.transform_values(&amp;:text)</code>
           </li>
         </div>
       
@@ -7143,7 +7143,7 @@
 
             
 
-            <code class="ruby">          cFOP: item.xpath(&quot;.//xmlns:CFOP&quot;),</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -7154,29 +7154,29 @@
 
             
 
-            <code class="ruby">          uCom: item.xpath(&quot;.//xmlns:uCom&quot;),</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="61">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">          qCom: item.xpath(&quot;.//xmlns:qCom&quot;),</code>
+            
+
+            <code class="ruby">    def extract_invoice_items</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
-            
-            
-
+          <li class="covered" data-hits="8" data-linenumber="62">
+            <span class="hits">8</span>
             
 
-            <code class="ruby">          vUnCom: item.xpath(&quot;.//xmlns:vUnCom&quot;),</code>
+            
+
+            <code class="ruby">      @items.map do |item|</code>
           </li>
         </div>
       
@@ -7187,18 +7187,18 @@
 
             
 
-            <code class="ruby">          vProd: item.xpath(&quot;.//xmlns:vProd&quot;),</code>
+            <code class="ruby">        {</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-            
-
+          <li class="covered" data-hits="16" data-linenumber="64">
+            <span class="hits">16</span>
             
 
-            <code class="ruby">          indTot: item.xpath(&quot;.//xmlns:indTot&quot;)</code>
+            
+
+            <code class="ruby">          cProd: item.xpath(&quot;.//xmlns:cProd&quot;),</code>
           </li>
         </div>
       
@@ -7209,7 +7209,7 @@
 
             
 
-            <code class="ruby">        }.transform_values(&amp;:text)</code>
+            <code class="ruby">          cEAN: item.xpath(&quot;.//xmlns:cEAN&quot;),</code>
           </li>
         </div>
       
@@ -7220,7 +7220,7 @@
 
             
 
-            <code class="ruby">          .merge(invoice_item_total_attributes: extract_invoice_item_totals(item))</code>
+            <code class="ruby">          xProd: item.xpath(&quot;.//xmlns:xProd&quot;),</code>
           </li>
         </div>
       
@@ -7231,7 +7231,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">          nCM: item.xpath(&quot;.//xmlns:NCM&quot;),</code>
           </li>
         </div>
       
@@ -7242,7 +7242,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">          cFOP: item.xpath(&quot;.//xmlns:CFOP&quot;),</code>
           </li>
         </div>
       
@@ -7253,18 +7253,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">          uCom: item.xpath(&quot;.//xmlns:uCom&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="70">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="70">
+            
             
 
             
 
-            <code class="ruby">    def extract_invoice_item_totals(item)</code>
+            <code class="ruby">          qCom: item.xpath(&quot;.//xmlns:qCom&quot;),</code>
           </li>
         </div>
       
@@ -7275,18 +7275,18 @@
 
             
 
-            <code class="ruby">      {</code>
+            <code class="ruby">          vUnCom: item.xpath(&quot;.//xmlns:vUnCom&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="16" data-linenumber="72">
-            <span class="hits">16</span>
+          <li class="never" data-hits="" data-linenumber="72">
+            
             
 
             
 
-            <code class="ruby">        vICMS: item.xpath(&quot;.//xmlns:imposto/xmlns:ICMS//xmlns:vICMS&quot;),</code>
+            <code class="ruby">          vProd: item.xpath(&quot;.//xmlns:vProd&quot;),</code>
           </li>
         </div>
       
@@ -7297,7 +7297,7 @@
 
             
 
-            <code class="ruby">        vIPI: item.xpath(&quot;.//xmlns:imposto/xmlns:IPI//xmlns:vIPI&quot;),</code>
+            <code class="ruby">          indTot: item.xpath(&quot;.//xmlns:indTot&quot;)</code>
           </li>
         </div>
       
@@ -7308,7 +7308,7 @@
 
             
 
-            <code class="ruby">        vII: item.xpath(&quot;.//xmlns:imposto/xmlns:II/xmlns:vII&quot;),</code>
+            <code class="ruby">        }.transform_values(&amp;:text).merge(invoice_item_total_attributes: extract_invoice_item_totals(item))</code>
           </li>
         </div>
       
@@ -7319,7 +7319,7 @@
 
             
 
-            <code class="ruby">        vIOF: item.xpath(&quot;.//xmlns:imposto/xmlns:II/xmlns:vIOF&quot;),</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -7330,34 +7330,12 @@
 
             
 
-            <code class="ruby">        vTotTrib: item.xpath(&quot;.//xmlns:imposto//xmlns:vTotTrib&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="80" data-linenumber="77">
-            <span class="hits">80</span>
-            
-
-            
-
-            <code class="ruby">      }.transform_values { |value| value.text.to_f }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="78">
-            
-            
-
-            
-
             <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="79">
+          <li class="never" data-hits="" data-linenumber="77">
             
             
 
@@ -7368,18 +7346,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="80">
+          <li class="covered" data-hits="1" data-linenumber="78">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def extract_invoice_totals</code>
+            <code class="ruby">    def extract_invoice_item_totals(item)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="81">
+          <li class="never" data-hits="" data-linenumber="79">
             
             
 
@@ -7390,13 +7368,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="82">
-            <span class="hits">9</span>
+          <li class="covered" data-hits="16" data-linenumber="80">
+            <span class="hits">16</span>
             
 
             
 
-            <code class="ruby">        vBC: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vBC&quot;),</code>
+            <code class="ruby">        vICMS: item.xpath(&quot;./xmlns:imposto/xmlns:ICMS//xmlns:vICMS&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="81">
+            
+            
+
+            
+
+            <code class="ruby">        vIPI: item.xpath(&quot;./xmlns:imposto/xmlns:IPI//xmlns:vIPI&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby">        vII: item.xpath(&quot;./xmlns:imposto/xmlns:II/xmlns:vII&quot;),</code>
           </li>
         </div>
       
@@ -7407,7 +7407,7 @@
 
             
 
-            <code class="ruby">        vICMS: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vICMS&quot;),</code>
+            <code class="ruby">        vIOF: item.xpath(&quot;./xmlns:imposto/xmlns:II/xmlns:vIOF&quot;),</code>
           </li>
         </div>
       
@@ -7418,18 +7418,18 @@
 
             
 
-            <code class="ruby">        vIPI: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vIPI&quot;),</code>
+            <code class="ruby">        vTotTrib: item.xpath(&quot;./xmlns:imposto//xmlns:vTotTrib&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="85">
-            
-            
-
+          <li class="covered" data-hits="80" data-linenumber="85">
+            <span class="hits">80</span>
             
 
-            <code class="ruby">        vII: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vII&quot;),</code>
+            
+
+            <code class="ruby">      }.transform_values { |value| value.text.to_f }</code>
           </li>
         </div>
       
@@ -7440,7 +7440,7 @@
 
             
 
-            <code class="ruby">        vIOF: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vIOF&quot;),</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -7451,18 +7451,18 @@
 
             
 
-            <code class="ruby">        vPIS: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vPIS&quot;),</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="88">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="88">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">        vCOFINS: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vCOFINS&quot;),</code>
+            
+
+            <code class="ruby">    def extract_invoice_totals</code>
           </li>
         </div>
       
@@ -7473,18 +7473,18 @@
 
             
 
-            <code class="ruby">        vOutro: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vOutro&quot;),</code>
+            <code class="ruby">      {</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="90">
-            
-            
-
+          <li class="covered" data-hits="9" data-linenumber="90">
+            <span class="hits">9</span>
             
 
-            <code class="ruby">        vNF: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vNF&quot;),</code>
+            
+
+            <code class="ruby">        vBC: @total.xpath(&quot;./xmlns:vBC&quot;),</code>
           </li>
         </div>
       
@@ -7495,18 +7495,18 @@
 
             
 
-            <code class="ruby">        vTotTrib: @xml.xpath(&quot;//xmlns:total/xmlns:ICMSTot/xmlns:vTotTrib&quot;)</code>
+            <code class="ruby">        vICMS: @total.xpath(&quot;./xmlns:vICMS&quot;),</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="90" data-linenumber="92">
-            <span class="hits">90</span>
+          <li class="never" data-hits="" data-linenumber="92">
+            
             
 
             
 
-            <code class="ruby">      }.transform_values { |value| value.text.to_f }</code>
+            <code class="ruby">        vIPI: @total.xpath(&quot;./xmlns:vIPI&quot;),</code>
           </li>
         </div>
       
@@ -7517,7 +7517,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        vII: @total.xpath(&quot;./xmlns:vII&quot;),</code>
           </li>
         </div>
       
@@ -7528,12 +7528,100 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">        vIOF: @total.xpath(&quot;./xmlns:vIOF&quot;),</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="95">
+            
+            
+
+            
+
+            <code class="ruby">        vPIS: @total.xpath(&quot;./xmlns:vPIS&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="96">
+            
+            
+
+            
+
+            <code class="ruby">        vCOFINS: @total.xpath(&quot;./xmlns:vCOFINS&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="97">
+            
+            
+
+            
+
+            <code class="ruby">        vOutro: @total.xpath(&quot;./xmlns:vOutro&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="98">
+            
+            
+
+            
+
+            <code class="ruby">        vNF: @total.xpath(&quot;./xmlns:vNF&quot;),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="99">
+            
+            
+
+            
+
+            <code class="ruby">        vTotTrib: @total.xpath(&quot;./xmlns:vTotTrib&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="90" data-linenumber="100">
+            <span class="hits">90</span>
+            
+
+            
+
+            <code class="ruby">      }.transform_values { |value| value.text.to_f }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="101">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="102">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="103">
             
             
 

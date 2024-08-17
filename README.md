@@ -85,12 +85,12 @@ The creation of this app ...
   - ⌛ Provide `report` download to user in `excel` format.
 
 - Extra:
-  - ⌛ Be.
+  - ✅ Refactor Services and Specs.
 
 ### 005: Filters Addition to Invoice Report Screen
 
 - Subtasks:
-  - ⌛ Use TDD approach; create the tests before.
+  - ⌛ Create filters in the `Batch` model / `Report` controller to create customized `reports`.
 
 - Extra:
   - ⌛ Be.
