@@ -73,11 +73,12 @@ The creation of this app ...
   - ✅ Create `Batch` model that has_many `invoices` through n to n.
   - ✅ Create `InvoiceBatch` join table model `Invoice` and `Batch`.
   - ✅ Adjust `Nfe::InvoiceService` to also process for models `InvoiceItem`, `InvoiceItemTotal` and `InvoiceTotal`.
-  - ⌛ Use `Batch` model to create finders of all data of collected `invoice`s in given structure.
-    - 1 ⌛ _Dados da Nota Fiscal_: [serie, nNF, dhEmi, emit, dest].
-    - 2 ⌛ _Produtos Listados_: [xProd, NCM, CFOP, uCom, qCom, vUnCom].
-    - 3 ⌛ _Impostos Associados_: [vICMS, vIPI, vPIS, vCOFINS].
-    - 4 ⌛ _Totalizadores_: Summary of item totals and item taxes.
+  - ✅ Use `Invoice` :show to render in given structure and serve as template for `Batch`.
+    - 1 ✅ _Dados da Nota Fiscal_: [serie, nNF, dhEmi, emit, dest].
+    - 2 ✅ _Produtos Listados_: [xProd, NCM, CFOP, uCom, qCom, vUnCom].
+    - 3 ✅ _Impostos Associados_: [vICMS, vIPI, vPIS, vCOFINS].
+    - 4 ✅ _Totalizadores_: Summary of item totals and item taxes.
+  - ⌛ Use `Batch` model to use `Invoice` :show to render report on its several `invoices`.
   - ⌛ Create `Invoice::ReportService` that generates `report`s.
   - ⌛ Attach the generated report from `Invoice::ReportService` to `Batch` model.
   - ⌛ Create `Report` controller and views from `Batch` model.

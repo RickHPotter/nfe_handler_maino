@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "/invoices", type: :request do
   let!(:user) { create(:user, :random) }
-  let!(:invoice) { create(:invoice, :one) }
+  let!(:invoice) { create(:invoice, :one, :all_the_way) }
   let(:xml_file_one) { fixture_file_upload(Rails.root.join("public", "spec", "assets", "001.xml"), "application/xml") }
   let(:xml_file_two) { fixture_file_upload(Rails.root.join("public", "spec", "assets", "002.xml"), "application/xml") }
   let(:zip_file) { fixture_file_upload(Rails.root.join("public", "spec", "assets", "zip.zip"), "application/zip") }

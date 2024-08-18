@@ -1,0 +1,31 @@
+en:
+  activerecord:
+    models:
+      invoice:
+        one: Invoice
+        other: Invoices
+    attributes:
+      invoice:
+        cUF: State Code
+        cNF: NF Code
+        mod: Model
+        serie: Serie
+        nNF: NF number
+        tpNF: NF type
+        dhEmi: Issue Date
+
+pt-BR:
+  activerecord:
+    models:
+      invoice:
+        one: Nota Fiscal
+        other: Notas Fiscais
+    attributes:
+      invoice:
+        cUF: Código da UF
+        cNF: Código da NF
+        mod: Modelo
+        serie: Série
+        nNF: Número da Nota Fiscal
+        tpNF: Tipo de Nota Fiscal
+        dhEmi: Data de Emissão

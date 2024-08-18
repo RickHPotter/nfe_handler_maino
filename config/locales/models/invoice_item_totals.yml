@@ -1,0 +1,21 @@
+en:
+  activerecord:
+    attributes:
+      invoice_entity:
+        cNPJ: CNPJ
+        xNome: Company Name
+        xFant: Company Custom Name
+        iE: IE
+        cRT: CRT - Tax Regime Code
+        indIEDest: IE Indicator
+
+pt-BR:
+  activerecord:
+    attributes:
+      invoice_entity:
+        cNPJ: CNPJ
+        xNome: Razão Social
+        xFant: Nome Fantasia
+        iE: Inscrição Estadual
+        cRT: CRT - Código de Regime Tributário
+        indIEDest: Indicador da IE

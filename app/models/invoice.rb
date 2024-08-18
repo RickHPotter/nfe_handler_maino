@@ -22,6 +22,35 @@
 #
 class Invoice < ApplicationRecord
   # @extends ..................................................................
+  MOD = { "55": "NFe", "65": "NFCe" }.freeze
+  TPNF = { "0": "Entrada", "1": "Saída" }.freeze
+  UF = { "11": "Rondônia - RO",
+         "12": "Acre - AC",
+         "13": "Amazonas - AM",
+         "14": "Roraima - RR",
+         "15": "Pará - PA",
+         "16": "Amapá - AP",
+         "17": "Tocantins - TO",
+         "21": "Maranhão - MA",
+         "22": "Piauí - PI",
+         "23": "Ceará - CE",
+         "24": "Rio Grande do Norte - RN",
+         "25": "Paraíba - PB",
+         "26": "Pernambuco - PE",
+         "27": "Alagoas - AL",
+         "28": "Sergipe - SE",
+         "29": "Bahia - BA",
+         "31": "Minas Gerais - MG",
+         "32": "Espírito Santo - ES",
+         "33": "Rio de Janeiro - RJ",
+         "35": "São Paulo - SP",
+         "41": "Paraná - PR",
+         "42": "Santa Catarina - SC",
+         "43": "Rio Grande do Sul - RS",
+         "50": "Mato Grosso do Sul - MS",
+         "51": "Mato Grosso - MT",
+         "52": "Goiás - GO",
+         "53": "Distrito Federal - DF" }.freeze
   # @includes .................................................................
   # @security (i.e. attr_accessible) ..........................................
   # @relationships ............................................................
@@ -30,9 +59,9 @@ class Invoice < ApplicationRecord
   belongs_to :emit, class_name: "InvoiceEntity"
   belongs_to :dest, class_name: "InvoiceEntity"
 
-  has_one :invoice_total
-  has_many :invoice_items
-  has_many :invoice_batches
+  has_one :invoice_total, dependent: :destroy
+  has_many :invoice_items, dependent: :destroy
+  has_many :invoice_batches, dependent: :destroy
   has_many :batches, through: :invoice_batches
 
   accepts_nested_attributes_for :emit
@@ -54,6 +83,18 @@ class Invoice < ApplicationRecord
   # @additional_config ........................................................
   # @class_methods ............................................................
   # @public_instance_methods ..................................................
+  def model_label
+    "#{mod} - #{MOD[mod.to_sym]}"
+  end
+
+  def tipo_nf_label
+    "#{tpNF} - #{TPNF[tpNF.to_sym]}"
+  end
+
+  def uf_label
+    "[#{cUF}] #{UF[cUF.to_sym]}"
+  end
+
   # @protected_instance_methods ...............................................
   # @private_instance_methods .................................................
 end

@@ -1,0 +1,19 @@
+<table class="min-w-full bg-white border border-gray-200 rounded-lg">
+  <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
+    <tr>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vICMS) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vIPI) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vPIS) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vCOFINS) %></th>
+    </tr>
+  </thead>
+
+  <tbody class="text-gray-700 text-sm">
+    <tr>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vICMS %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vIPI %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vPIS %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vCOFINS %></td>
+    </tr>
+  </tbody>
+</table>

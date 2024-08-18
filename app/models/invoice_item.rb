@@ -26,7 +26,7 @@ class InvoiceItem < ApplicationRecord
   # @relationships ............................................................
   belongs_to :invoice
 
-  has_one :invoice_item_total
+  has_one :invoice_item_total, dependent: :destroy
 
   accepts_nested_attributes_for :invoice_item_total
 

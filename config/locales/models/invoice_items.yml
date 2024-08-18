@@ -1,0 +1,33 @@
+en:
+  activerecord:
+    attributes:
+      invoice_item:
+        cProd: Product Code
+        cEAN: Barcode
+        xProd: Product Description
+        nCM: NCM Code
+        cFOP: CFOP
+        cFOP_description: Fiscal Code of Operations and Services
+        uCom: Unit
+        qCom: Quantity
+        vUnCom: Unit Value
+        vProd: Total Value
+        indTot: Total Indicator
+        tax_total: Tax Total
+
+pt-BR:
+  activerecord:
+    attributes:
+      invoice_item:
+        cProd: Código
+        cEAN: Código de Barras
+        xProd: Descrição
+        nCM: NCM
+        cFOP: CFOP
+        cFOP_description: Código Fiscal de Operações e Prestacoes
+        uCom: Unidade
+        qCom: Quantidade
+        vUnCom: Valor Unitário
+        vProd: Valor Total
+        indTot: Indicador de Total
+        tax_total: Valor Taxa

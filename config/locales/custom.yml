@@ -1,0 +1,102 @@
+en:
+  nav:
+    about: "About"
+
+  flash:
+    notice: "Success"
+    alert: "Attention"
+
+  devise:
+    sign_up: "Sign Up"
+    login: "Login"
+    logout: "Logout"
+
+  links:
+    show: "Show"
+    search: "Search"
+    filter: "Filter"
+    destroy: "Destroy"
+    new: "New"
+    back: "Back"
+    confirm: "Are you sure?"
+    confirm_delete: "Are you sure you want to delete?"
+
+  invoices:
+    model_name: "Invoice"
+    title: "Invoices"
+    reports: "Reports"
+    new: "New Invoice"
+    delete: "Delete Invoice"
+
+    file_input:
+      label: "Choose file"
+      hint: "or drop file here"
+      supported_formats: "Supported formats: [ XML, ZIP ]"
+
+    create:
+      success: "Your invoice is being processed."
+      failed: "Failed to process invoice. Something is wrong with your file."
+
+    destroy:
+      success: "Invoice deleted successfully."
+
+    job:
+      success: "Invoice processed successfully."
+      failed : "Failed to process invoice. Something is wrong with your invoice."
+
+    show:
+      details: "Invoice Details"
+      seller: "Seller"
+      buyer: "Buyer"
+      products: "Listed Items"
+      taxes: "Associated Taxes"
+      totals: "Totals"
+
+pt-BR:
+  nav:
+    about: "Sobre"
+
+  flash:
+    notice: "Sucesso"
+    alert: "Atenção"
+
+  links:
+    show: "Mostrar"
+    search: "Pesquisar"
+    filter: "Filtrar"
+    destroy: "Deletar"
+    new: "Novo"
+    back: "Voltar"
+    confirm: "Tem certeza?"
+    confirm_delete: "Tem certeza que quer apagar?"
+
+  invoices:
+    model_name: "Nota Fiscal"
+    title: "Notas Fiscais"
+    reports: "Relatórios"
+    new: "Nova Nota Fiscal"
+    delete: "Deletar Nota Fiscal"
+
+    file_input:
+      label: "Escolher arquivo"
+      hint: "ou solte um arquivo aqui"
+      supported_formats: "Arquivos Suportados: [ XML, ZIP ]"
+
+    create:
+      success: "Seu(s) XML(s) estão sendo processados."
+      failed: "Falha ao processar XML(s). Há algo de errado com o seu(s) arquivo(s)."
+
+    destroy:
+      success: "Nota Fiscal deletada com sucesso."
+
+    job:
+      success: "Nota Fiscal processada com sucesso."
+      failed : "Falha ao processar Nota Fiscal. Há algo de errado com a sua Nota Fiscal."
+
+    show:
+      details: "Dados da Nota Fiscal"
+      seller: "Emitente"
+      buyer: "Destinatário"
+      products: "Produtos Listados"
+      taxes: "Impostos Associados"
+      totals: "Totalizadores"

@@ -1,8 +1,15 @@
-<div class="w-full">
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl"><%= t("invoices.title") %></h1>
-    <%= Invoice.count %>
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <div class="max-w-6xl mx-auto p-6 shadow-md shadow-black rounded-lg">
+      <div class="text-center mb-10">
+        <h1 class="font-bold text-4xl"><%= t("invoices.title") %></h1>
+      </div>
 
-    <%= link_to t("invoices.new"), new_invoice_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      <% @invoices.each do |invoice| %>
+        <%= link_to invoice, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" do %>
+          <%= invoice.nNF %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

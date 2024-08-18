@@ -20,7 +20,7 @@ class Batch < ApplicationRecord
   # @relationships ............................................................
   belongs_to :user
 
-  has_many :invoice_batches
+  has_many :invoice_batches, dependent: :destroy
   has_many :invoices, through: :invoice_batches
 
   # @validations ..............................................................
