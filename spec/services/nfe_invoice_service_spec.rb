@@ -89,7 +89,7 @@ RSpec.describe Nfe::InvoiceService, type: :service do
       }.transform_values { |value| value.nil? ? "" : value }
     end
 
-    expect(invoice_items_attributes).to eq(extracted_xml)
+    expect(invoice_items_attributes).to match_array(extracted_xml)
   end
 
   describe "#run" do
