@@ -2,11 +2,11 @@
   <div class="mx-auto">
     <div class="max-w-6xl mx-auto p-6 shadow-md shadow-black rounded-lg">
       <div class="text-center mb-10">
-        <h1 class="font-bold text-4xl"><%= t("invoices.title") %></h1>
+        <h1 class="font-bold text-white text-4xl"><%= t("invoices.title") %></h1>
       </div>
 
       <% @invoices.each do |invoice| %>
-        <%= link_to invoice, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" do %>
+        <%= link_to invoice, class: "rounded-lg py-3 px-5 my-2 bg-blue-900 border border-black text-white block font-medium text-center" do %>
           <%= invoice.nNF %>
         <% end %>
       <% end %>

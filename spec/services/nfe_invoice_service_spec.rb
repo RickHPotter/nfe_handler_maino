@@ -5,9 +5,10 @@ require "rails_helper"
 RSpec.describe Nfe::InvoiceService, type: :service do
   let(:user) { create(:user) }
   let(:document) { create(:document) }
+  let(:batch) { create(:batch, total_invoices: 1, user:) }
   let(:xml_content) { fixture_file_upload(Rails.root.join("public", "spec", "assets", "001.xml"), "text/xml").read }
   let(:xml_service) { Xml::NfeExtractionService.new(xml_content) }
-  let(:nfe_service) { described_class.new(xml_service, user, document.id) }
+  let(:nfe_service) { Nfe::InvoiceService.new(xml_service, user, document.id, batch) }
 
   def expect_invoice_to_match(invoice:, extracted_xml:)
     invoice_attributes = {

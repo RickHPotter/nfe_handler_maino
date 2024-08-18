@@ -14,6 +14,7 @@ gem "redis", ">= 4.0.1"
 gem "sidekiq"
 
 gem "importmap-rails"
+gem "pagy"
 gem "stimulus-rails"
 gem "turbo-rails"
 

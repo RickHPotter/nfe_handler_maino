@@ -78,15 +78,16 @@ The creation of this app ...
     - 2 ✅ _Produtos Listados_: [xProd, NCM, CFOP, uCom, qCom, vUnCom].
     - 3 ✅ _Impostos Associados_: [vICMS, vIPI, vPIS, vCOFINS].
     - 4 ✅ _Totalizadores_: Summary of item totals and item taxes.
-  - ⌛ Use `Batch` model to use `Invoice` :show to render report on its several `invoices`.
+  - ✅ Create `Report` controller to display `Batch` of `Invoice`s.
+  - ✅ Use `Report` :show to render report on `batch` that contains its several `invoices`.
   - ⌛ Create `Invoice::ReportService` that generates `report`s.
   - ⌛ Attach the generated report from `Invoice::ReportService` to `Batch` model.
-  - ⌛ Create `Report` controller and views from `Batch` model.
   - ⌛ Create an `InvoiceReport` `Sidekiq` Job.
   - ⌛ Provide `report` download to user in `excel` format.
 
 - Extra:
   - ✅ Refactor Services and Specs.
+  - ✅ Implement `datatable` with `Hotwire` and `Pagy`.
 
 ### 005: Filters Addition to Invoice Report Screen
 

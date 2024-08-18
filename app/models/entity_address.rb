@@ -27,19 +27,26 @@ class EntityAddress < ApplicationRecord
   # @validations ..............................................................
   validates :xLgr, :nro, :xBairro, :cMun, :xMun, :uF, :cEP, presence: true
   validates :xLgr, :xBairro, :xMun, length: { within: 2..60 }
-  validates :nro, :xPais, length: { within: 1..60 }
-  validates :xCpl, length: { maximum: 60 }
+  validates :nro, length: { within: 1..60 }
+  validates :xPais, :xCpl, length: { maximum: 60 }
   validates :cMun, length: { maximum: 7 }
   validates :uF, length: { is: 2 }
   validates :cEP, length: { is: 8 }
-  validates :cPais, length: { is: 4 }
+  validates :cPais, length: { maximum: 4 }
   validates :fone, length: { minimum: 7, maximum: 14, allow_blank: true }
 
   # @callbacks ................................................................
+  before_validation :fill_in_country
+
   # @scopes ...................................................................
   # @additional_config ........................................................
   # @class_methods ............................................................
   # @public_instance_methods ..................................................
+  def fill_in_country
+    self.cPais = "1058"
+    self.xPais = "BRASIL"
+  end
+
   # @protected_instance_methods ...............................................
   # @private_instance_methods .................................................
 end

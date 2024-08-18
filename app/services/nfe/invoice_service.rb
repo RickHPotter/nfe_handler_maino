@@ -4,10 +4,11 @@ module Nfe
   class InvoiceService
     attr_reader :invoice
 
-    def initialize(extracted_nfe, current_user, document_id)
+    def initialize(extracted_nfe, current_user, document_id, batch)
       @nfe = extracted_nfe
       @current_user = current_user
       @document = Document.find(document_id)
+      @batch = batch
 
       @nfe_data = @nfe.extract_invoice_data
       @nfe_entities = { emit: @nfe.extract_invoice_entity(:emit), dest: @nfe.extract_invoice_entity(:dest) }
@@ -19,6 +20,8 @@ module Nfe
     def run
       ActiveRecord::Base.transaction do
         @invoice = Invoice.create!(invoice_attributes)
+        @invoice.batches << @batch
+        @batch.increment!(:processed_invoices)
       end
     end
 

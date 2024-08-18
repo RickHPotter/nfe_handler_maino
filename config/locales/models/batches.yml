@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    attributes:
+      batch:
+        total_invoices: Invoices Total
+        processed_invoices: Processed Invoices
+        finished: Finished
+
+pt-BR:
+  activerecord:
+    attributes:
+      batch:
+        total_invoices: Total de Notas Fiscais
+        processed_invoices: Notas Fiscais Processadas
+        finished: Finalizado

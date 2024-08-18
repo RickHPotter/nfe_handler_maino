@@ -68,6 +68,7 @@ class Invoice < ApplicationRecord
   accepts_nested_attributes_for :dest
   accepts_nested_attributes_for :invoice_total
   accepts_nested_attributes_for :invoice_items
+  accepts_nested_attributes_for :invoice_batches
 
   # @validations ..............................................................
   validates :cUF, :cNF, :mod, :serie, :nNF, :dhEmi, :tpNF, presence: true

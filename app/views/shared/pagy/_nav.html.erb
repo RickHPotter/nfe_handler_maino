@@ -1,0 +1,92 @@
+<% link = pagy_link_proc(pagy) %>
+
+<% unless content_for?(:prev) %>
+  <% content_for :prev do %>
+    <div class="px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+    </div>
+  <% end %>
+<% end %>
+
+<% unless content_for?(:next) %>
+  <% content_for :next do %>
+    <div class="-ml-px px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </div>
+  <% end %>
+<% end %>
+
+<nav class="mt-6 py-3 flex items-center justify-between" role="navigation">
+  <div class="flex-1 flex justify-between sm:hidden">
+    <% if pagy.prev %>
+      <%== link.call(pagy.prev, "Previous", "aria-label='previous' class='page' data-turbo-action='advance'") %>
+    <% else %>
+      <div></div>
+    <% end %>
+
+    <% if pagy.next %>
+      <%== link.call(pagy.next, "Next", "aria-label='next' class='page' data-turbo-action='advance'") %>
+    <% else %>
+      <div></div>
+    <% end %>
+  </div>
+
+  <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+    <div>
+      <p class="text-sm leading-5 text-gray-700">
+        Showing
+
+        <span class="font-medium">
+          <%= pagy.from %>
+        </span>
+
+        to
+
+        <span class="font-medium">
+          <%= pagy.to %>
+        </span>
+
+        of
+
+        <span class="font-medium">
+          <%= pagy.count %>
+        </span>
+
+        results
+      </p>
+    </div>
+
+    <div>
+      <span class="relative z-0 inline-flex shadow-sm">
+        <% if pagy.prev %>
+          <%== link.call(pagy.prev, content_for(:prev), "aria-label='previous' data-turbo-action='advance'") %>
+        <% else %>
+          <%= content_for(:prev) %>
+        <% end %>
+
+        <% pagy.series.each do |item| # series example: [1, :gap, 7, 8, "9", 10, 11, :gap, 36] %>
+          <% case item %>
+          <% when Integer # page link %>
+            <%== link.call(item, item, "class='page--link' data-turbo-action='advance'") %>
+          <% when String # current page %>
+            <%== link.call(item, item, "class='page--link active' data-turbo-action='advance'") %>
+          <% when :gap # page gap %>
+            <span class="page--link">
+              <%== pagy_t('pagy.nav.gap') %>
+            </span>
+          <% end %>
+        <% end %>
+
+        <% if pagy.next %>
+          <%== link.call(pagy.next, content_for(:next), "aria-label='next' data-turbo-action='advance'") %>
+        <% else %>
+          <%= content_for(:next) %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</nav>

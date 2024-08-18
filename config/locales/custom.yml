@@ -6,11 +6,6 @@ en:
     notice: "Success"
     alert: "Attention"
 
-  devise:
-    sign_up: "Sign Up"
-    login: "Login"
-    logout: "Logout"
-
   links:
     show: "Show"
     search: "Search"
@@ -20,11 +15,14 @@ en:
     back: "Back"
     confirm: "Are you sure?"
     confirm_delete: "Are you sure you want to delete?"
+    actions: "Actions"
+
+  shared:
+    no_content: "No content"
 
   invoices:
     model_name: "Invoice"
     title: "Invoices"
-    reports: "Reports"
     new: "New Invoice"
     delete: "Delete Invoice"
 
@@ -52,6 +50,16 @@ en:
       taxes: "Associated Taxes"
       totals: "Totals"
 
+  reports:
+    title: "Reports"
+
+    create:
+      success: "Your report is being processed."
+      failed: "Failed to process report. Something is wrong with your file."
+
+    destroy:
+      success: "Report deleted successfully."
+
 pt-BR:
   nav:
     about: "Sobre"
@@ -69,11 +77,14 @@ pt-BR:
     back: "Voltar"
     confirm: "Tem certeza?"
     confirm_delete: "Tem certeza que quer apagar?"
+    actions: "Ações"
+
+  shared:
+    no_content: "Nenhum conteúdo aqui"
 
   invoices:
     model_name: "Nota Fiscal"
     title: "Notas Fiscais"
-    reports: "Relatórios"
     new: "Nova Nota Fiscal"
     delete: "Deletar Nota Fiscal"
 
@@ -100,3 +111,13 @@ pt-BR:
       products: "Produtos Listados"
       taxes: "Impostos Associados"
       totals: "Totalizadores"
+
+  reports:
+    title: Relatórios
+
+    create:
+      success: "Seu arquivo está sendo processado."
+      failed: "Falha ao processar arquivo. Há algo de errado com o seu arquivo."
+
+    destroy:
+      success: "Arquivo deletado com sucesso."

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/lovelace/personal/nfe_handler_maino/config/environment.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -10,7 +10,7 @@
           1
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/application.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/application.rb": {
         "lines": [
           1,
           null,
@@ -70,7 +70,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/boot.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -78,7 +78,7 @@
           1
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/environments/test.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -150,7 +150,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/initializers/assets.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -161,7 +161,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/initializers/content_security_policy.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -172,61 +172,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/lovelace/personal/nfe_handler_maino/config/initializers/devise.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/lovelace/personal/nfe_handler_maino/config/initializers/filter_parameter_logging.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/lovelace/personal/nfe_handler_maino/config/initializers/inflections.rb": {
-        "lines": [
           null,
           null,
           null,
@@ -245,7 +190,62 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/initializers/locale.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/devise.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/locale.rb": {
         "lines": [
           null,
           null,
@@ -253,7 +253,20 @@
           1
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/initializers/permissions_policy.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/pagy.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -270,7 +283,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/config/routes.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/config/routes.rb": {
         "lines": [
           null,
           null,
@@ -284,120 +297,13 @@
           1,
           null,
           1,
+          1,
           null,
           1,
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/user.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/application_record.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/batch.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/entity_address.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/user.rb": {
         "lines": [
           null,
           null,
@@ -422,16 +328,75 @@
           null,
           1,
           null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/application_record.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/batch.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
           null,
           null,
           null,
           null,
           1,
+          null,
           1,
           1,
-          1,
-          1,
-          1,
+          null,
+          null,
           1,
           1,
           1,
@@ -446,7 +411,63 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/invoice_batch.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/entity_address.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          176,
+          176,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/invoice_batch.rb": {
         "lines": [
           null,
           null,
@@ -479,7 +500,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/invoice_entity.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/invoice_entity.rb": {
         "lines": [
           null,
           null,
@@ -550,7 +571,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/invoice_item.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/invoice_item.rb": {
         "lines": [
           null,
           null,
@@ -604,7 +625,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/invoice_item_total.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/invoice_item_total.rb": {
         "lines": [
           null,
           null,
@@ -646,7 +667,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/invoice.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/invoice.rb": {
         "lines": [
           null,
           null,
@@ -714,6 +735,7 @@
           1,
           1,
           null,
+          1,
           1,
           1,
           1,
@@ -750,7 +772,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/invoice_total.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/invoice_total.rb": {
         "lines": [
           null,
           null,
@@ -783,6 +805,20 @@
           null,
           1,
           1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -799,7 +835,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/services/nfe/invoice_service.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/services/nfe/invoice_service.rb": {
         "lines": [
           null,
           null,
@@ -811,6 +847,7 @@
           7,
           7,
           7,
+          7,
           null,
           7,
           7,
@@ -820,6 +857,8 @@
           null,
           null,
           1,
+          7,
+          7,
           7,
           7,
           null,
@@ -858,7 +897,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/services/xml/nfe_extraction_service.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/services/xml/nfe_extraction_service.rb": {
         "lines": [
           null,
           null,
@@ -965,7 +1004,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/services/zip/xml_extraction_service.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/services/zip/xml_extraction_service.rb": {
         "lines": [
           null,
           null,
@@ -990,7 +1029,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/models/document.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/models/document.rb": {
         "lines": [
           null,
           null,
@@ -1009,7 +1048,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/jobs/xml/processing_job.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/jobs/xml/processing_job.rb": {
         "lines": [
           null,
           null,
@@ -1023,6 +1062,8 @@
           0,
           null,
           0,
+          0,
+          null,
           0,
           null,
           0,
@@ -1041,7 +1082,7 @@
           null
         ]
       },
-      "/home/lovelace/personal/nfe_handler_maino/app/jobs/application_job.rb": {
+      "/home/lovelace/personal/Ruby/nfe_handler_maino/app/jobs/application_job.rb": {
         "lines": [
           null,
           null,
@@ -1055,6 +1096,6 @@
         ]
       }
     },
-    "timestamp": 1724000812
+    "timestamp": 1724019531
   }
 }

@@ -22,12 +22,18 @@
         <td class="py-2 px-4 border border-gray-200"><%= item.xProd %></td>
         <td class="py-2 px-4 border border-gray-200 text-center"><%= item.nCM %></td>
         <td class="py-2 px-4 border border-gray-200 text-center"><%= item.cFOP %></td>
-        <td class="py-2 px-4 border border-gray-200"><%= item.uCom %></td>
-        <td class="py-2 px-4 border border-gray-200"><%= item.qCom %></td>
-        <td class="py-2 px-4 border border-gray-200"><%= number_to_currency item.vUnCom %></td>
-        <td class="py-2 px-4 border border-gray-200"><%= number_to_currency item.vProd %></td>
-        <td class="py-2 px-4 border border-gray-200"><%= number_to_currency item.invoice_item_total.tax_total %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= item.uCom %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end"><%= item.qCom %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end whitespace-nowrap"><%= number_to_currency item.vUnCom %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end whitespace-nowrap"><%= number_to_currency item.vProd %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end whitespace-nowrap"><%= number_to_currency item.invoice_item_total.tax_total %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<% if @invoice_items.present? %>
+  <%= render "shared/pagy/nav", pagy: @pagy_invoice_items, link: 'data-turbo-frame="invoice-items-section"' %>
+<% else %>
+  <%= render "shared/no_content" %>
+<% end %>

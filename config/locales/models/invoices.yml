@@ -22,10 +22,12 @@ pt-BR:
         other: Notas Fiscais
     attributes:
       invoice:
-        cUF: Código da UF
-        cNF: Código da NF
+        cUF: Código UF
+        cNF: Código NF
         mod: Modelo
         serie: Série
-        nNF: Número da Nota Fiscal
-        tpNF: Tipo de Nota Fiscal
-        dhEmi: Data de Emissão
+        nNF: Número NF
+        tpNF: Tipo
+        dhEmi: Data Emissão
+        emit_id: Emitente
+        dest_id: Destinatário
