@@ -13,6 +13,9 @@ en:
         nNF: NF number
         tpNF: NF type
         dhEmi: Issue Date
+        emit_id: Issuer
+        dest_id: Receiver
+        processed_at: Processed
 
 pt-BR:
   activerecord:
@@ -31,3 +34,4 @@ pt-BR:
         dhEmi: Data Emissão
         emit_id: Emitente
         dest_id: Destinatário
+        processed_at: Processado em

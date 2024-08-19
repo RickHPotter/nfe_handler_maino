@@ -16,6 +16,14 @@
       <%= report.finished ? "FINALIZADO" : "PENDENTE" %>
     </div>
 
+    <div class="table-cell border-l border-r px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= report.created_at.strftime("%d/%m/%Y") %>
+    </div>
+
+    <div class="table-cell border-l border-r px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= report.user.full_name %>
+    </div>
+
     <div class="flex border-l border-r justify-start gap-1 px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
       <%= link_to report_path(report), class: "text-blue-600 hover:text-blue-900", data: { turbo_frame: "_top" } do %>
         <%= render "shared/svgs/web" %>

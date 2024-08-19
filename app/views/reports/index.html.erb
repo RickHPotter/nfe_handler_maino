@@ -18,10 +18,9 @@
         </svg>
       </div>
 
-      <!-- FIXME: add rails-autosave -->
       <%= search_field_tag :description, params[:description],
                            class: "pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50",
-                           placeholder: "Search...",
+                           placeholder: t("links.search"),
                            data: { action: "keyup->autosave#save" } %>
     </div>
   <% end %>

@@ -23,6 +23,14 @@
                 </div>
 
                 <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= attribute_model(Invoice, :processed_at) %>
+                </div>
+
+                <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= attribute_model(@reports, :user_id) %>
+                </div>
+
+                <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                   <%= t("links.actions") %>
                 </div>
               </div>

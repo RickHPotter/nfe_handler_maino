@@ -93,7 +93,7 @@ The creation of this app ...
 
 - Subtasks:
   - ✅ Deploy to Azure.
-  - ⌛ Create filters in the `Batch` model / `Report` controller to create customized `reports`.
+  - ✅ Create filters in the `Batch` model / `Report` controller to create customized `reports`.
 
 - Extra:
-  - ⌛ Be.
+  - ✅ Rest.
