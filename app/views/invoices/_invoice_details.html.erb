@@ -1,0 +1,34 @@
+<div class="text-sm text-gray-600">
+  <strong><%= attribute_model(@invoice, :mod) %>:</strong>
+  <span class="text-black"><%= @invoice.model_label %></span>
+</div>
+
+<div class="text-sm text-gray-600">
+  <strong><%= attribute_model(@invoice, :serie) %>:</strong>
+  <span class="text-black"><%= @invoice.serie %></span>
+</div>
+
+<div class="text-sm text-gray-600">
+  <strong><%= attribute_model(@invoice, :cUF) %>:</strong>
+  <span class="text-black"><%= @invoice.uf_label %></span>
+</div>
+
+<div class="text-sm text-gray-600">
+  <strong><%= attribute_model(@invoice, :cNF) %>:</strong>
+  <span class="text-black"><%= @invoice.cNF %></span>
+</div>
+
+<div class="text-sm text-gray-600">
+  <strong><%= attribute_model(@invoice, :nNF) %>:</strong>
+  <span class="text-black"><%= @invoice.nNF %></span>
+</div>
+
+<div class="text-sm text-gray-600">
+  <strong><%= attribute_model(@invoice, :tpNF) %>:</strong>
+  <span class="text-black"><%= @invoice.tipo_nf_label %></span>
+</div>
+
+<div class="text-sm text-gray-600">
+  <strong><%= attribute_model(@invoice, :dhEmi) %>:</strong>
+  <span class="text-black"><%= l @invoice.dhEmi, format: :long %></span>
+</div>

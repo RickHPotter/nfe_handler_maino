@@ -7,7 +7,13 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.all
   end
 
-  def show; end
+  def show
+    @emit = @invoice.emit
+    @dest = @invoice.dest
+    @invoice_total = @invoice.invoice_total
+
+    @pagy_invoice_items, @invoice_items = pagy @invoice_items = @invoice.invoice_items.includes(:invoice_item_total)
+  end
 
   def new; end
 

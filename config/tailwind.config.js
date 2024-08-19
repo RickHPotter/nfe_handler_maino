@@ -8,7 +8,8 @@ module.exports = {
     './app/components/**/*.rb',
     './app/components/**/*.html.erb',
     './app/views/**/*.{erb,haml,html,slim}',
-    './node_modules/flowbite/**/*.js'
+    './app/assets/stylesheets/**/*.css',
+    './app/javascript/**/*.js'
   ],
   darkMode: 'class',
   theme: {
@@ -16,6 +17,11 @@ module.exports = {
       'xs': '530px',
       ...defaultTheme.screens,
     },
+    extend: {
+      boxShadow: {
+        'outline-blue': `0 0 0 3px rgba(191, 219, 254, .5)`,
+      }
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_16_151248) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_19_015558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_16_151248) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "batches", force: :cascade do |t|
+    t.string "description"
+    t.integer "total_invoices", null: false
+    t.integer "processed_invoices", null: false
+    t.boolean "finished", default: false, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_batches_on_document_id"
+    t.index ["user_id"], name: "index_batches_on_user_id"
+  end
+
   create_table "documents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,6 +74,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_16_151248) do
     t.string "fone", limit: 14, comment: "fone: Telefone (DDD + número)."
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invoice_batches", force: :cascade do |t|
+    t.bigint "invoice_id", null: false
+    t.bigint "batch_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_invoice_batches_on_batch_id"
+    t.index ["invoice_id", "batch_id"], name: "index_invoice_batches_on_invoice_id_and_batch_id", unique: true
+    t.index ["invoice_id"], name: "index_invoice_batches_on_invoice_id"
   end
 
   create_table "invoice_entities", force: :cascade do |t|
@@ -164,6 +187,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_16_151248) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "batches", "documents"
+  add_foreign_key "batches", "users"
+  add_foreign_key "invoice_batches", "batches"
+  add_foreign_key "invoice_batches", "invoices"
   add_foreign_key "invoice_entities", "entity_addresses", column: "ender_id"
   add_foreign_key "invoice_item_totals", "invoice_items"
   add_foreign_key "invoice_items", "invoices"

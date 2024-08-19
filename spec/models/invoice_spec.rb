@@ -38,6 +38,10 @@ RSpec.describe Invoice, type: :model do
 
     context "( associations )" do
       %i[user document emit dest].each { |model| it { should belong_to(model) } }
+
+      %i[invoice_total].each { |model| it { should have_one(model) } }
+
+      %i[invoice_items invoice_batches batches].each { |model| it { should have_many(model) } }
     end
   end
 end

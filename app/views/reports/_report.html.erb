@@ -1,0 +1,30 @@
+<%= turbo_frame_tag report, class: "table-row-group" do %>
+  <div class="<%= class_names("table-row", local_assigns[:report_counter]&.even? ? "bg-white" : "bg-gray-100") %>">
+    <div class="table-cell border-l border-r px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= report.id %>
+    </div>
+
+    <div class="table-cell border-l border-r px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= report.total_invoices %>
+    </div>
+
+    <div class="table-cell border-l border-r px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= report.processed_invoices %>
+    </div>
+
+    <div class="table-cell border-l border-r px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+      <%= report.finished ? "FINALIZADO" : "PENDENTE" %>
+    </div>
+
+    <div class="flex border-l border-r justify-start gap-1 px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+      <%= link_to report_path(report), class: "text-blue-600 hover:text-blue-900", data: { turbo_frame: "_top" } do %>
+        <%= render "shared/svgs/web" %>
+      <% end %>
+
+      <%= link_to download_excel_report_path(report), class: "text-blue-600 hover:text-blue-900", data: { turbo_frame: "_top" } do %>
+        <%= render "shared/svgs/excel" %>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>

@@ -51,8 +51,7 @@ module TranslateHelper
   # @return [String] Human-readable attribute name based on the model and attribute.
   #
   def attribute_model(model, attribute)
-    model = model.class if model.class.is_a?(Class)
-    model = model.model_name.singular
+    model = model.model_name.singular if model.respond_to?(:model_name)
     I18n.t("activerecord.attributes.#{model}.#{attribute}")
   end
 

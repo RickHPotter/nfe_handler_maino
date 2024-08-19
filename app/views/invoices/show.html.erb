@@ -1,9 +1,53 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
-    <%= link_to t("links.back"), invoices_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="w-[1100px] mx-auto p-6 bg-white shadow-md rounded-lg">
+      <section class="mb-8 flex justify-between">
+        <%= link_to t("links.back"), invoices_path, class: "border border-black shadow-md rounded p-3 bg-yellow-200 font-medium" %>
 
-    <div class="inline-block ml-2">
-      <%= button_to t("invoices.delete"), @invoice, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <%= link_to t("links.destroy"), @invoice, class: "border border-black shadow-md rounded p-3 bg-red-300 font-medium",
+                                                  data: { turbo_method: :delete, turbo_confirm: I18n.t("links.confirm_delete") } %>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.details") %></h2>
+        <div class="grid grid-cols-3 gap-4">
+          <%= render "invoice_details" %>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.seller") %></h2>
+        <div class="grid grid-cols-2 gap-4">
+          <%= render "entity_details", entity: @invoice.emit %>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.buyer") %></h2>
+        <div class="grid grid-cols-2 gap-4">
+          <%= render "entity_details", entity: @invoice.dest %>
+
+          <div class="text-sm text-gray-600">
+            <strong><%= attribute_model(@invoice.dest, :indIEDest) %>:</strong>
+            <span class="text-black"><%= @invoice.dest.ind_ie_dest_label %></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.products") %></h2>
+        <%= render "invoice_items_table" %>
+      </section>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.taxes") %></h2>
+        <%= render "invoice_taxes_table" %>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.totals") %></h2>
+        <%= render "invoice_totals_table" %>
+      </div>
     </div>
   </div>
 </div>

@@ -17,17 +17,22 @@
 #
 class InvoiceEntity < ApplicationRecord
   # @extends ..................................................................
+  CRT = { "1": "Simples Nacional", "2": "Simples Nacional - excesso de sublimite de receita bruta", "3": "Regime Normal" }.freeze
+  INDIEDEST = { "1": "Contribuinte ICMS", "2": "Contribuinte Isento de ICMS", "9": "Não Contribuinte" }.freeze
+
   # @includes .................................................................
   # @security (i.e. attr_accessible) ..........................................
   # @relationships ............................................................
   belongs_to :ender, class_name: "EntityAddress"
+
+  accepts_nested_attributes_for :ender
 
   # @validations ..............................................................
   validates :cNPJ, :xNome, presence: true
   validates :xNome, length: { in: 2..60 }
   validates :xFant, length: { maximum: 60 }
   validates :iE, length: { maximum: 14 }
-  validates :cRT, length: { is: 1, allow_blank: true }
+  validates :cRT, length: { is: 1, inclusion: { in: %w[1 2 3] }, allow_blank: true }
   validates :indIEDest, length: { maximum: 1, inclusion: { in: %w[1 2 9] } }
 
   # @callbacks ................................................................
@@ -37,6 +42,18 @@ class InvoiceEntity < ApplicationRecord
   # @additional_config ........................................................
   # @class_methods ............................................................
   # @public_instance_methods ..................................................
+  def crt_label
+    return "-" if cRT.nil?
+
+    "#{cRT} - #{CRT[cRT.to_sym]}"
+  end
+
+  def ind_ie_dest_label
+    return "-" if indIEDest.nil?
+
+    "#{indIEDest} - #{INDIEDEST[indIEDest.to_sym]}"
+  end
+
   # @protected_instance_methods ...............................................
   # @private_instance_methods .................................................
 

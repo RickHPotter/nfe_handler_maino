@@ -1,0 +1,35 @@
+en:
+  activerecord:
+    attributes:
+      invoice_total:
+        vBC: Calculation Basis
+        vICMS: ICMS
+        vIPI: IPI
+        vII: II
+        vIOF: IOF
+        vPIS: PIS
+        vCOFINS: COFINS
+        vOutro: Other Values
+        vNF: Value
+        tax_total: Tax
+        vTotTrib: vTotTrib
+        tax_total_hint: "📖 Tax Total: This field represents the sum of vICMS, vIPI, vII, and vIOF."
+        vTotTrib_hint: "⚠️  Attention: The field vTotTrib does not represent the total value of all taxes in the electronic invoice (NFe), but rather an estimate of the total taxes in the production and sale chain."
+
+pt-BR:
+  activerecord:
+    attributes:
+      invoice_total:
+        vBC: Base de Cálculo
+        vICMS: ICMS
+        vIPI: IPI
+        vII: II
+        vIOF: IOF
+        vPIS: PIS
+        vCOFINS: COFINS
+        vOutro: Outros Valores
+        vNF: Valor
+        tax_total: Taxa
+        vTotTrib: vTotTrib
+        tax_total_hint: "📖 Valor Taxa: Este campo representa a soma dos impostos vICMS, vIPI, vII, e vIOF."
+        vTotTrib_hint: "⚠️  Atenção: O campo vTotTrib não representa o valor total dos impostos na Nota Fiscal Eletrônica (NFe), mas sim uma estimativa dos tributos incidentes em toda a cadeia de produção e comercialização."

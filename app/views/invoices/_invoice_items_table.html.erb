@@ -1,0 +1,39 @@
+<table class="min-w-full bg-white border border-gray-200 rounded-lg">
+  <caption class="caption-bottom">
+    <%= attribute_model(InvoiceTotal, :tax_total_hint) %>
+  </caption>
+
+  <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
+    <tr>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :xProd) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :nCM) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :cFOP) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :uCom) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :qCom) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :vUnCom) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :vProd) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(InvoiceItem, :tax_total) %></th>
+    </tr>
+  </thead>
+
+  <tbody class="text-gray-700 text-sm">
+    <% @invoice_items.each do |item| %>
+      <tr>
+        <td class="py-2 px-4 border border-gray-200"><%= item.xProd %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= item.nCM %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= item.cFOP %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= item.uCom %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end"><%= item.qCom %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end whitespace-nowrap"><%= number_to_currency item.vUnCom %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end whitespace-nowrap"><%= number_to_currency item.vProd %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end whitespace-nowrap"><%= number_to_currency item.invoice_item_total.tax_total %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @invoice_items.present? %>
+  <%= render "shared/pagy/nav", pagy: @pagy_invoice_items, link: 'data-turbo-frame="invoice-items-section"' %>
+<% else %>
+  <%= render "shared/no_content" %>
+<% end %>

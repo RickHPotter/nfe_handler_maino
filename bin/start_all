@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Start Redis in the background
+redis-server --daemonize yes
+
+# Start Sidekiq in the background
+bundle exec sidekiq &
+
+# Start the Rails server in the foreground
+exec ./bin/rails server

@@ -1,0 +1,29 @@
+<table class="border-collapse w-full border border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm">
+  <caption class="caption-bottom">
+    <%= attribute_model(@invoice_total, :vTotTrib_hint) %>
+  </caption>
+
+  <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
+    <tr>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vNF) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vICMS) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vIPI) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vPIS) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vCOFINS) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :tax_total) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(@invoice_total, :vTotTrib) %></th>
+    </tr>
+  </thead>
+
+  <tbody class="text-gray-700 text-sm">
+    <tr>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vNF %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vICMS %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vIPI %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vPIS %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vCOFINS %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.tax_total %></td>
+      <td class="py-2 px-4 border border-gray-200 text-end"><%= number_to_currency @invoice_total.vTotTrib %></td>
+    </tr>
+  </tbody>
+</table>

@@ -108,6 +108,14 @@ GEM
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
+    caxlsx (4.1.0)
+      htmlentities (~> 4.3, >= 4.3.4)
+      marcel (~> 1.0)
+      nokogiri (~> 1.10, >= 1.10.4)
+      rubyzip (>= 1.3.0, < 3)
+    caxlsx_rails (0.6.4)
+      actionpack (>= 3.1)
+      caxlsx (>= 3.0)
     childprocess (5.1.0)
       logger (~> 1.5)
     concurrent-ruby (1.3.4)
@@ -163,6 +171,7 @@ GEM
       actioncable (>= 6.0.0)
       listen (>= 3.0.0)
       railties (>= 6.0.0)
+    htmlentities (4.3.4)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -236,6 +245,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (6.4.3)
     parallel (1.26.2)
     parser (3.3.4.2)
       ast (~> 2.4.1)
@@ -460,6 +470,7 @@ DEPENDENCIES
   brakeman
   bullet
   bundler-audit
+  caxlsx_rails
   database_cleaner-active_record
   debug
   devise
@@ -471,6 +482,7 @@ DEPENDENCIES
   jbuilder
   letter_opener_web
   neovim
+  pagy
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)

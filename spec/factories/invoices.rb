@@ -58,5 +58,13 @@ FactoryBot.define do
       tpNF { %w[0 1].sample }
       dhEmi { DateTime.now }
     end
+
+    trait :all_the_way do
+      invoice_total { create(:invoice_total, :invoice_one) }
+      invoice_items do
+        [ create(:invoice_item, :invoice_one_item_one, invoice_item_total: create(:invoice_item_total, :invoice_one_item_one)),
+          create(:invoice_item, :invoice_one_item_two, invoice_item_total: create(:invoice_item_total, :invoice_one_item_two)) ]
+      end
+    end
   end
 end

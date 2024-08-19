@@ -4,75 +4,55 @@ module Nfe
   class InvoiceService
     attr_reader :invoice
 
-    def initialize(extracted_nfe, current_user, document_id)
+    def initialize(extracted_nfe, current_user, document_id, batch)
       @nfe = extracted_nfe
       @current_user = current_user
       @document = Document.find(document_id)
+      @batch = batch
 
-      @nfe_data = extracted_nfe.extract_invoice_data
-      @nfe_entities = { emit: extracted_nfe.extract_invoice_entity(:emit), dest: extracted_nfe.extract_invoice_entity(:dest) }
-      @nfe_addresses = { emit: extracted_nfe.extract_invoice_address(:emit), dest: extracted_nfe.extract_invoice_address(:dest) }
+      @nfe_data = @nfe.extract_invoice_data
+      @nfe_entities = { emit: @nfe.extract_invoice_entity(:emit), dest: @nfe.extract_invoice_entity(:dest) }
+      @nfe_addresses = { emit: @nfe.extract_entity_address(:emit), dest: @nfe.extract_entity_address(:dest) }
+      @nfe_totals = @nfe.extract_invoice_totals
+      @nfe_items = @nfe.extract_invoice_items
     end
 
     def run
-      invoice_emit_address = build_invoice_entity_address(:emit)
-      invoice_dest_address = build_invoice_entity_address(:dest)
-
-      invoice_emit_entity = build_invoice_entities(:emit)
-      invoice_dest_entity = build_invoice_entities(:dest)
-
       ActiveRecord::Base.transaction do
-        emit_address = EntityAddress.create!(invoice_emit_address)
-        dest_address = EntityAddress.create!(invoice_dest_address)
-
-        emit = InvoiceEntity.create!(invoice_emit_entity.merge(ender: emit_address))
-        dest = InvoiceEntity.create!(invoice_dest_entity.merge(ender: dest_address))
-
-        @invoice = Invoice.create!(build_invoice.merge(emit:, dest:, processed_at: DateTime.current))
+        @invoice = Invoice.create!(invoice_attributes)
+        @invoice.batches << @batch
+        @batch.increment!(:processed_invoices)
       end
     end
 
     private
 
-    def build_invoice_entity_address(entity)
+    def invoice_attributes
       {
-        xLgr: @nfe_addresses[entity][:xLgr],
-        nro: @nfe_addresses[entity][:nro],
-        xCpl: @nfe_addresses[entity][:xCpl],
-        xBairro: @nfe_addresses[entity][:xBairro],
-        cMun: @nfe_addresses[entity][:cMun],
-        xMun: @nfe_addresses[entity][:xMun],
-        uF: @nfe_addresses[entity][:uF],
-        cEP: @nfe_addresses[entity][:cEP],
-        cPais: @nfe_addresses[entity][:cPais],
-        xPais: @nfe_addresses[entity][:xPais],
-        fone: @nfe_addresses[entity][:fone]
+        **@nfe_data,
+        user_id: @current_user.id, document_id: @document.id,
+        emit_attributes: build_invoice_entities(:emit),
+        dest_attributes: build_invoice_entities(:dest),
+        processed_at: DateTime.current,
+        invoice_total_attributes: build_invoice_totals,
+        invoice_items_attributes: build_invoice_items
       }.compact_blank
     end
 
     def build_invoice_entities(entity)
-      {
-        cNPJ: @nfe_entities[entity][:cNPJ],
-        xNome: @nfe_entities[entity][:xNome],
-        xFant: @nfe_entities[entity][:xFant],
-        iE: @nfe_entities[entity][:iE],
-        cRT: @nfe_entities[entity][:cRT],
-        indIEDest: @nfe_entities[entity][:indIEDest]
-      }.compact_blank
+      @nfe_entities[entity].compact_blank.merge(ender_attributes: build_invoice_entity_address(entity))
     end
 
-    def build_invoice
-      {
-        cUF: @nfe_data[:cUF],
-        cNF: @nfe_data[:cNF],
-        mod: @nfe_data[:mod],
-        serie: @nfe_data[:serie],
-        nNF: @nfe_data[:nNF],
-        tpNF: @nfe_data[:tpNF],
-        dhEmi: @nfe_data[:dhEmi],
-        user_id: @current_user.id,
-        document_id: @document.id
-      }.compact_blank
+    def build_invoice_entity_address(entity)
+      @nfe_addresses[entity].compact_blank
+    end
+
+    def build_invoice_totals
+      @nfe_totals.compact_blank
+    end
+
+    def build_invoice_items
+      @nfe_items.each(&:compact_blank)
     end
   end
 end

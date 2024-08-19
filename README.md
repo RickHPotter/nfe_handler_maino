@@ -57,11 +57,10 @@ The creation of this app ...
   - ✅ Create a `Sidekiq` `Xml::ProcessingJob` for the `XmlExtractionService` Service.
   - ✅ Create a `Sidekiq` `Nfe::InvoiceJob` for the `InvoiceExtractionService` Service.
   - ✅ Fire `Nfe::InvoiceJob` as soon as `Xml::ProcessingJob` finishes processing an `xml`.
-
   - ✅ Create models that revolve around with `Invoice` Structure.
     - 1 ✅ `InvoiceItem` model -> [cProd, cEAN, xProd, NCM, CFOP, uCom, qCom, vUnCom, vProd, indTot]
     - 2 ✅ `InvoiceItemTotal` model -> [vICMS, vIPI, VII, VIOF, vTotTrib]
-    - 2 ✅ `InvoiceTotal` model -> [vBC, vICMS, vIPI, VII, VIOF, vPIS, vCOFINS, vOutro, vNF, vTotTrib]
+    - 3 ✅ `InvoiceTotal` model -> [vBC, vICMS, vIPI, VII, VIOF, vPIS, vCOFINS, vOutro, vNF, vTotTrib]
 
 - Extra:
   - ✅ Create specs for the whole flow of Services.
@@ -71,22 +70,30 @@ The creation of this app ...
 ### 004: Invoice Reports Screen
 
 - Subtasks:
-  - ⌛ Create `Invoice::ReportService` that processes `Report`s.
-  - ⌛ Create an `InvoiceReport` `Sidekiq` Job.
-    - 1 ⌛ `Report` based on all invoices uploaded.
-    - 2 ⌛ Provide `Report` download to user in `excel` format.
-  - ⌛ The created `Report` should follow a given structure.
-    - 1 ⌛ Dados da Nota Fiscal: Número de Série (serie), Número da Nota Fiscal (nNF), Data e Hora de Emissão (dhEmi), Dados do Emitente (emit) e do Destinatário (dest). 2 ⌛ Produtos Listados: Nome (xProd), NCM (NCM), CFOP (CFOP), Unidade Comercializada (uCom), Quantidade Comercializada (qCom), Valor Unitário (vUnCom).
-    - 3 ⌛ Impostos Associados: Valor do ICMS (vICMS), Valor do IPI (vIPI), Valor do PIS (vPIS), Valor do COFINS (vCOFINS).
-    - 4 ⌛ Totalizadores: Resumo dos valores totais dos produtos e impostos.
+  - ✅ Create `Batch` model that has_many `invoices` through n to n.
+  - ✅ Create `InvoiceBatch` join table model `Invoice` and `Batch`.
+  - ✅ Adjust `Nfe::InvoiceService` to also process for models `InvoiceItem`, `InvoiceItemTotal` and `InvoiceTotal`.
+  - ✅ Use `Invoice` :show to render in given structure and serve as template for `Batch`.
+    - 1 ✅ _Dados da Nota Fiscal_: [serie, nNF, dhEmi, emit, dest].
+    - 2 ✅ _Produtos Listados_: [xProd, NCM, CFOP, uCom, qCom, vUnCom].
+    - 3 ✅ _Impostos Associados_: [vICMS, vIPI, vPIS, vCOFINS].
+    - 4 ✅ _Totalizadores_: Summary of item totals and item taxes.
+  - ✅ Create `Report` controller to display `Batch` of `Invoice`s.
+  - ✅ Use `Report` :show to render report on `batch` that contains its several `invoices`.
+  - ✅ Create `Report::ExcelService` that generates `report`s.
+  - ✅ Provide `report` download to user in `excel` format.
+  - ✅ Attach the generated report from `Report::ExcelService` to `Batch` model.
+  - ❌ Create an `InvoiceReport` `Sidekiq` Job.
 
 - Extra:
-  - ⌛ Be.
+  - ✅ Refactor Services and Specs.
+  - ✅ Implement `datatable` with `Hotwire` and `Pagy`.
 
 ### 005: Filters Addition to Invoice Report Screen
 
 - Subtasks:
-  - ⌛ Use TDD approach; create the tests before.
+  - ✅ Deploy to Azure.
+  - ⌛ Create filters in the `Batch` model / `Report` controller to create customized `reports`.
 
 - Extra:
   - ⌛ Be.

@@ -1,0 +1,36 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <div class="w-[1100px] mx-auto p-6 bg-white shadow-md rounded-lg">
+      <section class="mb-8 flex justify-between">
+        <%= link_to t("links.back"), reports_path, class: "border border-black shadow-md rounded p-3 bg-yellow-200 font-medium" %>
+
+        <%= link_to t("links.destroy"), report_path(@report), class: "border border-black shadow-md rounded p-3 bg-red-300 font-medium",
+                                                              data: { turbo_method: :delete, turbo_confirm: I18n.t("links.confirm_delete") } %>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.details") %></h2>
+        <turbo-frame id="invoices-section">
+          <%= render "invoices_details_table" %>
+        </turbo-frame>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.products") %></h2>
+        <turbo-frame id="invoice-items-section">
+          <%= render "invoices/invoice_items_table" %>
+        </turbo-frame>
+      </section>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.taxes") %></h2>
+        <%= render "invoices/invoice_taxes_table" %>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-black mb-4"><%= t("invoices.show.totals") %></h2>
+        <%= render "invoices/invoice_totals_table" %>
+      </div>
+    </div>
+  </div>
+</div>

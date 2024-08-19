@@ -1,0 +1,41 @@
+<table class="min-w-full bg-white border border-gray-200 rounded-lg">
+  <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
+    <tr>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :mod) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :serie) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :cNF) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :nNF) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :tpNF) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :cUF) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :dhEmi) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :emit_id) %></th>
+      <th class="py-2 px-4 border border-gray-200"><%= attribute_model(Invoice, :dest_id) %></th>
+    </tr>
+  </thead>
+
+  <tbody class="text-gray-700 text-sm">
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= invoice.mod %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= invoice.serie %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= invoice.cNF %></td>
+        <td class="py-2 px-4 border border-gray-200 text-end"><%= invoice.nNF %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= invoice.tpNF %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= invoice.cUF %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center"><%= invoice.dhEmi.strftime("%d/%m/%Y") %></td>
+        <td class="py-2 px-4 border border-gray-200 text-center text-indigo-700 cursor-help" title="<%= invoice.emit.xNome %>">
+          <%= invoice.emit.cNPJ %>
+        </td>
+        <td class="py-2 px-4 border border-gray-200 text-center text-indigo-700 cursor-help" title="<%= invoice.dest.xNome %>">
+          <%= invoice.dest.cNPJ %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @invoices.present? %>
+  <%= render "shared/pagy/nav", pagy: @pagy_invoices, link: 'data-turbo-frame="invoices-section"' %>
+<% else %>
+  <%= render "shared/no_content" %>
+<% end %>

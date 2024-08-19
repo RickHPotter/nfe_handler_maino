@@ -10,6 +10,7 @@ RSpec.describe Xml::NfeExtractionService, type: :service do
   let(:invoice_data) { build(:invoice, :one) }
   let(:sender_data) { build(:invoice_entity, :emit) }
   let(:address_data) { build(:entity_address, :emit) }
+  let(:invoice_total) { build(:invoice_total, :invoice_one) }
 
   describe "#extract_invoice_data" do
     it "correctly extracts the invoice data from the XML" do
@@ -42,9 +43,9 @@ RSpec.describe Xml::NfeExtractionService, type: :service do
     end
   end
 
-  describe "#extract_invoice_address" do
+  describe "#extract_entity_address" do
     it "correctly extracts the invoice address data from the XML" do
-      extracted_data = service.extract_invoice_address(:emit)
+      extracted_data = service.extract_entity_address(:emit)
       expect(extracted_data).to eq(
         xLgr: address_data.xLgr,
         nro: address_data.nro,
@@ -58,6 +59,24 @@ RSpec.describe Xml::NfeExtractionService, type: :service do
         xPais: address_data.xPais,
         fone: address_data.fone
       )
+    end
+  end
+
+  describe "#extract_invoice_totals" do
+    it "correctly extracts the invoice totals data from the XML" do
+      extracted_data = service.extract_invoice_totals
+      expect(extracted_data).to eq({
+        vBC: invoice_total.vBC,
+        vICMS: invoice_total.vICMS,
+        vIPI: invoice_total.vIPI,
+        vII: invoice_total.vII,
+        vIOF: invoice_total.vIOF,
+        vPIS: invoice_total.vPIS,
+        vCOFINS: invoice_total.vCOFINS,
+        vOutro: invoice_total.vOutro,
+        vNF: invoice_total.vNF,
+        vTotTrib: invoice_total.vTotTrib
+      }.transform_values(&:to_f))
     end
   end
 end

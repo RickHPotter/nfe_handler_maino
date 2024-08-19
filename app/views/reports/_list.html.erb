@@ -1,0 +1,41 @@
+<%= turbo_frame_tag :reports_list do %>
+  <% if @reports.present? %>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="min-w-full divide-y divide-gray-200 table">
+              <div class="table-row">
+                <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  ID
+                </div>
+
+                <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= attribute_model(@reports, :total_invoices) %>
+                </div>
+
+                <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= attribute_model(@reports, :processed_invoices) %>
+                </div>
+
+                <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= attribute_model(@reports, :finished) %>
+                </div>
+
+                <div class="table-cell border-2 px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                  <%= t("links.actions") %>
+                </div>
+              </div>
+
+              <%= render partial: "report", collection: @reports %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render "shared/pagy/nav", pagy: @pagy %>
+  <% else %>
+    <%= render "shared/no_content" %>
+  <% end %>
+<% end %>

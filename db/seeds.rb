@@ -13,4 +13,4 @@
 #     │   └── InvoiceItemTotal
 #     └── InvoiceTotal
 
-FactoryBot.create(:user)
+# FactoryBot.create(:user)

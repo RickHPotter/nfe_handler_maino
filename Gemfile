@@ -14,10 +14,13 @@ gem "redis", ">= 4.0.1"
 gem "sidekiq"
 
 gem "importmap-rails"
+gem "pagy"
 gem "stimulus-rails"
 gem "turbo-rails"
 
 gem "tailwindcss-rails"
+
+gem "caxlsx_rails"
 
 gem "bootsnap", require: false
 gem "tzinfo-data", platforms: %i[windows jruby]

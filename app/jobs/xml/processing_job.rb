@@ -12,7 +12,11 @@ module Xml
       xmls = [ file_content ] if file_type == "xml"
       xmls ||= xmls_from_zip(file_content)
 
-      xmls.each { |xml_content| Nfe::InvoiceJob.perform_later(document_id, xml_content, user) }
+      batch = Batch.create(user:, total_invoices: xmls.count, processed_invoices: 0, finished: false)
+
+      xmls.each { |xml_content| Nfe::InvoiceJob.perform_later(document_id, xml_content, user, batch) }
+
+      batch.update_attribute(:finished, true)
 
       # user.notifications.create(message: I18n.t("invoices.job.success"))
     rescue StandardError # => e
