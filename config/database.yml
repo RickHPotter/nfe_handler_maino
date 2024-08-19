@@ -16,6 +16,8 @@ test:
 
 production:
   <<: *default
-  database: nfe_handler_maino_production
-  username: nfe_handler_maino
-  password: <%= ENV["NFE_HANDLER_MAINO_DATABASE_PASSWORD"] %>
+  database: <%= ENV["APPSETTING_DB_NAME"] %>
+  username: <%= ENV["APPSETTING_DB_USER"] %>
+  password: <%= ENV["APPSETTING_DB_PASSWORD"] %>
+  host: <%= ENV["APPSETTING_DB_HOST"] %>
+  port: <%= ENV["APPSETTING_DB_PORT"] %>

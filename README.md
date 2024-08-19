@@ -92,6 +92,7 @@ The creation of this app ...
 ### 005: Filters Addition to Invoice Report Screen
 
 - Subtasks:
+  - ✅ Deploy to Azure.
   - ⌛ Create filters in the `Batch` model / `Report` controller to create customized `reports`.
 
 - Extra:

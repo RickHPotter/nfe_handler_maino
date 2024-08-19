@@ -16,6 +16,8 @@ module Xml
 
       xmls.each { |xml_content| Nfe::InvoiceJob.perform_later(document_id, xml_content, user, batch) }
 
+      batch.update_attribute(:finished, true)
+
       # user.notifications.create(message: I18n.t("invoices.job.success"))
     rescue StandardError # => e
       # user.notifications.create(message: I18n.t("invoices.job.failed"), body: e.message)

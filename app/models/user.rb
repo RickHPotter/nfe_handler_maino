@@ -35,6 +35,8 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..22 }
 
   # @callbacks ................................................................
+  before_validation :no_time
+
   # @scopes ...................................................................
   # @additional_config ........................................................
   # @class_methods ............................................................
@@ -50,4 +52,10 @@ class User < ApplicationRecord
 
   # @protected_instance_methods ...............................................
   # @private_instance_methods .................................................
+  private
+
+  def no_time
+    self.confirmed_at = Time.now
+    self.confirmation_sent_at = Time.now
+  end
 end
