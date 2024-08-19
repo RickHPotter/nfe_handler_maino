@@ -19,6 +19,7 @@ class Batch < ApplicationRecord
   # @security (i.e. attr_accessible) ..........................................
   # @relationships ............................................................
   belongs_to :user
+  belongs_to :document, optional: true
 
   has_many :invoice_batches, dependent: :destroy
   has_many :invoices, through: :invoice_batches

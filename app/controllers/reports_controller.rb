@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show destroy]
+  before_action :set_report, only: %i[show destroy download_excel]
 
   def index
     @pagy, @reports = pagy Batch.all
@@ -36,6 +36,15 @@ class ReportsController < ApplicationController
       format.html { redirect_to reports_url, notice: I18n.t("reports.destroy.success") }
       format.json { head :no_content }
     end
+  end
+
+  def download_excel
+    @document = @report.document
+    send_data(@document.file.download, filename: @document.file.filename.to_s, type: @document.file.content_type) and return if @document
+
+    excel_report = Report::ExcelService.new(@report).generate
+
+    send_data excel_report, filename: "invoices_report.xlsx", type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   end
 
   private

@@ -20,6 +20,8 @@ gem "turbo-rails"
 
 gem "tailwindcss-rails"
 
+gem "caxlsx_rails"
+
 gem "bootsnap", require: false
 gem "tzinfo-data", platforms: %i[windows jruby]
 

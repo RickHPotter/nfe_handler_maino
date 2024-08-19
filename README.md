@@ -80,10 +80,10 @@ The creation of this app ...
     - 4 ✅ _Totalizadores_: Summary of item totals and item taxes.
   - ✅ Create `Report` controller to display `Batch` of `Invoice`s.
   - ✅ Use `Report` :show to render report on `batch` that contains its several `invoices`.
-  - ⌛ Create `Invoice::ReportService` that generates `report`s.
-  - ⌛ Attach the generated report from `Invoice::ReportService` to `Batch` model.
-  - ⌛ Create an `InvoiceReport` `Sidekiq` Job.
-  - ⌛ Provide `report` download to user in `excel` format.
+  - ✅ Create `Report::ExcelService` that generates `report`s.
+  - ✅ Provide `report` download to user in `excel` format.
+  - ✅ Attach the generated report from `Report::ExcelService` to `Batch` model.
+  - ❌ Create an `InvoiceReport` `Sidekiq` Job.
 
 - Extra:
   - ✅ Refactor Services and Specs.
