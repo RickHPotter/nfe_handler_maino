@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show destroy]
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.where(user: current_user)
   end
 
   def show

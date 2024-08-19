@@ -4,7 +4,11 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[show destroy download_excel]
 
   def index
-    @pagy, @reports = pagy Batch.all
+    @pagy, @reports = pagy Batch.all.where(user: current_user)
+                                .by_cnpj(params[:cnpj])
+                                .by_x_nome(params[:x_nome])
+                                .by_c_uf(params[:c_uf])
+                                .apply_sort(params)
   end
 
   def show

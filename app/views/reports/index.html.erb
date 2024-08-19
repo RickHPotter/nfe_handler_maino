@@ -18,7 +18,17 @@
         </svg>
       </div>
 
-      <%= search_field_tag :description, params[:description],
+      <%= search_field_tag :cnpj, params[:cnpj],
+                           class: "pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50",
+                           placeholder: t("links.search"),
+                           data: { action: "keyup->autosave#save" } %>
+
+      <%= search_field_tag :x_nome, params[:x_nome],
+                           class: "pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50",
+                           placeholder: t("links.search"),
+                           data: { action: "keyup->autosave#save" } %>
+
+      <%= search_field_tag :c_uf, params[:c_uf],
                            class: "pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50",
                            placeholder: t("links.search"),
                            data: { action: "keyup->autosave#save" } %>
